@@ -2,7 +2,6 @@ extends Node2D
 
 const METEOR_SCENE: PackedScene = preload("res://Enemies/Meteor/meteor.tscn")
 const BONUS_SCENE: PackedScene = preload("res://Bonus/bonus.tscn")
-const BOSS_WAVE_SEQUENCE: Array[StringName] = [&"Boss1", &"Boss2", &"Boss3"]
 
 ##- Node References -----------------------------------------------------------##
 @onready var enemy_path: Path2D = $EnemyPath
@@ -25,6 +24,7 @@ const BOSS_WAVE_SEQUENCE: Array[StringName] = [&"Boss1", &"Boss2", &"Boss3"]
 ##- Private Variables ---------------------------------------------------------##
 var _boss_wave: int = 0
 var _player_instance: BaseShip 
+var BOSS_WAVE_SEQUENCE: Array[StringName] = [&"Boss1", &"Boss2", &"Boss3"]
 
 ##- Godot Engine Functions ----------------------------------------------------##
 func _ready() -> void:
@@ -32,6 +32,7 @@ func _ready() -> void:
 	get_tree().get_root().connect("go_back_requested", _on_go_back_requested)
 	BossManager.boss_defeated.connect(_on_boss_manager_defeated)
 	var screen_rect: Rect2 = get_viewport().get_visible_rect()
+	BOSS_WAVE_SEQUENCE.shuffle()
 	
 	GameManager.reset_current_score()
 	_setup_offscreen_nodes(screen_rect)

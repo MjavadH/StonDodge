@@ -47,7 +47,7 @@ metadata/_edit_lock_ = true
 [node name="EnemySpawner" type="PathFollow2D" parent="EnemyPath"]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.4
 autostart = true
 
 [node name="bonusTimer" type="Timer" parent="."]
