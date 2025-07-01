@@ -1,0 +1,126 @@
+[gd_scene load_steps=19 format=3 uid="uid://cwgqsh7qi22n5"]
+
+[ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_jlpmp"]
+[ext_resource type="Script" uid="uid://cvxmgdmndt4dj" path="res://Player/Ships/EmeraldWyrm/EmeraldWyrm.gd" id="2_2u3fq"]
+[ext_resource type="Texture2D" uid="uid://bpr1uml061n26" path="res://Player/Ships/EmeraldWyrm/assets/damaged.webp" id="2_kcfd8"]
+[ext_resource type="Texture2D" uid="uid://jgys83cxgggf" path="res://Player/Ships/EmeraldWyrm/assets/fly_off.webp" id="3_2u3fq"]
+[ext_resource type="Texture2D" uid="uid://cfisbrmo44npf" path="res://Player/Ships/EmeraldWyrm/assets/fly.webp" id="4_2n8ai"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ja2"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(0, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tppd6"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(111, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gik1c"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(222, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sal5"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(333, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uogla"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(444, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osshd"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(555, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6o17"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(0, 130, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbfq7"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(111, 130, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nvhn"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(222, 130, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctivc"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(333, 130, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypnvd"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(444, 130, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllt3"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(555, 130, 111, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2rua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ja2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tppd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gik1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sal5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uogla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osshd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6o17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbfq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nvhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctivc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypnvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllt3")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2u3fq")
+}],
+"loop": true,
+"name": &"down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2n8ai")
+}],
+"loop": true,
+"name": &"up",
+"speed": 10.0
+}]
+
+[node name="EmeraldWyrm" instance=ExtResource("1_jlpmp")]
+script = ExtResource("2_2u3fq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_d2rua")
+animation = &"up"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="9"]
+build_mode = 1
+polygon = PackedVector2Array(-52, 5, -26, -19, -16, -49, -4, -65, 8, -49, 20, -18, 49, 5, 55, 31, 27, 17, 30, 38, 12, 42, 12, 23, -2, 53, -17, 24, -17, 44, -37, 43, -33, 17, -55, 30)

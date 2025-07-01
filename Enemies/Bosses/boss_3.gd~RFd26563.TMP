@@ -1,0 +1,32 @@
+extends RigidBody2D
+
+signal boss_eliminate
+signal health_changed(health: int)
+
+@export var health := 50
+@export var character_node: CharacterBody2D
+@export var rotation_speed := 5.0
+
+@onready var boss_damage_area: Area2D = $BossDamageArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var is_die := false
+
+func _physics_process(delta: float) -> void:
+	if is_instance_valid(character_node):
+		look_at(character_node.global_position)
+
+func start() -> void:
+	animation_player.play("ShowSelf")
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	emit_signal("health_changed", health)
+	if health <= 0:
+		die()
+
+func die():
+	is_die = true
+	boss_damage_area.is_die = true
+	emit_signal("boss_eliminate")
+	queue_free()

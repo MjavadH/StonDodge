@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0le87t8h8pka"]
+
+[ext_resource type="Script" uid="uid://bhtk3jioyror7" path="res://Enemies/Bosses/BossDamageArea.gd" id="1_a67l7"]
+
+[node name="BossDamageArea" type="Area2D" groups=["Boss"]]
+script = ExtResource("1_a67l7")
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

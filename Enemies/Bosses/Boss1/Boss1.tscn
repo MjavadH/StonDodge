@@ -1,0 +1,281 @@
+[gd_scene load_steps=33 format=3 uid="uid://m0wrgvng8qy2"]
+
+[ext_resource type="Script" uid="uid://bg5dof0aevgfy" path="res://Enemies/Bosses/Boss1/boss_1.gd" id="1_gparn"]
+[ext_resource type="Texture2D" uid="uid://bhbyft6absyoh" path="res://Enemies/Bosses/Boss1/assets/BossMeteor1.webp" id="2_vb6c8"]
+[ext_resource type="Texture2D" uid="uid://cvfrk8umaplwg" path="res://Enemies/Bosses/Boss1/assets/BossEye1.webp" id="3_6xpv8"]
+[ext_resource type="Texture2D" uid="uid://42mbtb8vie6d" path="res://Enemies/Bosses/assets/485.png" id="4_vb6c8"]
+[ext_resource type="Texture2D" uid="uid://cuoseasffg5a7" path="res://Enemies/Bosses/Boss1/assets/particle.png" id="6_ojjjf"]
+[ext_resource type="PackedScene" uid="uid://c0le87t8h8pka" path="res://Enemies/Bosses/boss_damage_area.tscn" id="6_vx02n"]
+[ext_resource type="Script" uid="uid://cnng24j3m56ln" path="res://Core/ParticleManager.gd" id="7_vx02n"]
+[ext_resource type="AudioStream" uid="uid://dvn0pjiks6wy6" path="res://Enemies/Bosses/Boss1/assets/Pulse.ogg" id="8_ky32b"]
+[ext_resource type="AudioStream" uid="uid://ckbl3kr7q65xo" path="res://Enemies/Bosses/assets/explosion.ogg" id="9_t6r5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xpv8"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojjjf"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx02n"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ud0s"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky32b"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6r5m"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myu4l"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl82n"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rura3"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(512, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo5gi"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l336f"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(640, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jejup"]
+atlas = ExtResource("4_vb6c8")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wo57h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xpv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojjjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx02n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ud0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky32b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6r5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myu4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl82n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rura3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo5gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l336f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jejup")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxk0h"]
+radius = 343.023
+
+[sub_resource type="Curve2D" id="Curve2D_vb6c8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -335, 9, 0, 0, 0, 0, -31, 311, 0, 0, 0, 0, 232, 219, 0, 0, 0, 0, 335, -25, 0, 0, 0, 0, 168, -150, 0, 0, 0, 0, -114, -253, 0, 0, 0, 0, -335, 9)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_6xpv8"]
+resource_name = "Pulse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vb6c8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(520, -360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gparn"]
+resource_name = "ShowSelf"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(520, -360), Vector2(520, 500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xpv8"]
+_data = {
+&"Pulse": SubResource("Animation_6xpv8"),
+&"RESET": SubResource("Animation_vb6c8"),
+&"ShowSelf": SubResource("Animation_gparn")
+}
+
+[sub_resource type="Gradient" id="Gradient_ojjjf"]
+colors = PackedColorArray(1, 0.45098, 0, 1, 0.388235, 0, 0.0235294, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vx02n"]
+gradient = SubResource("Gradient_ojjjf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ky32b"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 550.0
+emission_ring_inner_radius = 600.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 10.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_vx02n")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vx02n"]
+radius = 600.0
+
+[node name="Boss1" type="RigidBody2D" groups=["Boss", "Enemy"]]
+z_index = 2
+position = Vector2(520, -360)
+collision_layer = 2
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_gparn")
+
+[node name="BodySprite" type="Node2D" parent="."]
+
+[node name="Sprite_Meteor" type="Sprite2D" parent="BodySprite"]
+texture = ExtResource("2_vb6c8")
+
+[node name="Marker2D" type="Marker2D" parent="BodySprite"]
+
+[node name="Sprite_EyeR" type="Sprite2D" parent="BodySprite/Marker2D"]
+position = Vector2(0, -147.193)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6xpv8")
+flip_h = true
+
+[node name="Sprite_EyeL" type="Sprite2D" parent="BodySprite/Marker2D"]
+position = Vector2(0, 132.835)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6xpv8")
+
+[node name="ExplosionAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_wo57h")
+animation = &"destroyed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hxk0h")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vb6c8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-335, 9)
+rotation = 0.782098
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6xpv8")
+}
+
+[node name="PulseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 100
+texture = ExtResource("6_ojjjf")
+lifetime = 5.0
+speed_scale = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ky32b")
+
+[node name="BossDamageArea" parent="." instance=ExtResource("6_vx02n")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossDamageArea"]
+shape = SubResource("CircleShape2D_vx02n")
+
+[node name="Particle_Manager" type="Node" parent="."]
+script = ExtResource("7_vx02n")
+
+[node name="PulseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ky32b")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_t6r5m")
+
+[connection signal="animation_finished" from="ExplosionAnim" to="." method="_on_explosion_anim_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="PulseTimer" to="." method="_on_pulse_timer_timeout"]

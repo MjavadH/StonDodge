@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://80acpudrox7p"]
+
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_o2wdu"]
+[ext_resource type="Texture2D" uid="uid://cabs2gn5uwygp" path="res://Data/Upgrades/assets/icon_heart.webp" id="1_ol6xt"]
+
+[resource]
+script = ExtResource("1_o2wdu")
+id = &"emeraldwyrm_health_upgrade"
+icon = ExtResource("1_ol6xt")
+max_level = 2
+cost_per_level = Array[int]([1000, 1000])
+value_per_level = [5, 6]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

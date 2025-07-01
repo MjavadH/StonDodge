@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7r7ju1ydy6t5"]
+
+[ext_resource type="Script" uid="uid://dx2x01gefbsgr" path="res://UI/StartMenu/start.gd" id="1_3v0vt"]
+[ext_resource type="Shader" uid="uid://drcqqishffaf4" path="res://World/Assets/main.gdshader" id="1_c8l3o"]
+[ext_resource type="Texture2D" uid="uid://crvd6jl7ykeyr" path="res://UI/Assets/button.webp" id="3_rc2ob"]
+[ext_resource type="Texture2D" uid="uid://toppclssy8cu" path="res://Player/Ships/Default/assets/fly.webp" id="5_h4gb8"]
+[ext_resource type="Texture2D" uid="uid://b2rgxmu10k5fj" path="res://UI/Assets/LogoType.webp" id="7_alxum"]
+[ext_resource type="PackedScene" uid="uid://rv1wlptx1or7" path="res://UI/Settings/settings.tscn" id="7_jw5cq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alxum"]
+shader = ExtResource("1_c8l3o")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/speed = 0.2
+shader_parameter/density = 145.0
+shader_parameter/compression = 0.5
+shader_parameter/trail_size = 100.0
+shader_parameter/brightness = 0.8
+
+[sub_resource type="Curve2D" id="Curve2D_a7sdg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 613, 1073, 126.006, 154.048, -126.006, -154.048, 1097.75, 294.771, 69.181, -151.417, -69.181, 151.417, 356.681, -104.132, 237.988, 106.679, -237.988, -106.679, 504.39, -118.384, -17.9057, -72.6394, 17.9057, 72.6394, 103.87, 355.292, -52.8926, -84.2975, 52.8926, 84.2975, 393.507, 585.51, -53.1468, -12.4009, 53.1468, 12.4009, 449.628, 1049.86, -2.32889, 3.6703, 2.32889, -3.6703, 613, 1073)
+}
+point_count = 8
+
+[node name="Start" type="CanvasLayer"]
+script = ExtResource("1_3v0vt")
+
+[node name="background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_alxum")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Quit_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -470.0
+offset_right = 498.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 84
+text = "Quit"
+icon = ExtResource("3_rc2ob")
+flat = true
+icon_alignment = 1
+
+[node name="Settings_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -490.0
+offset_top = -470.0
+offset_right = -52.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+icon = ExtResource("3_rc2ob")
+flat = true
+icon_alignment = 1
+
+[node name="Start_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -490.0
+offset_top = -820.0
+offset_right = -52.0
+offset_bottom = -545.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 84
+text = "Start"
+icon = ExtResource("3_rc2ob")
+flat = true
+icon_alignment = 1
+
+[node name="Shop_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -820.0
+offset_right = 498.0
+offset_bottom = -545.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 84
+text = "Shop"
+icon = ExtResource("3_rc2ob")
+flat = true
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 734.0
+grow_horizontal = 2
+texture = ExtResource("7_alxum")
+stretch_mode = 3
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-163, 458)
+rotation = -0.598552
+curve = SubResource("Curve2D_a7sdg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(613, 1073)
+rotation = -1.01372
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = 1.78024
+texture = ExtResource("5_h4gb8")
+
+[node name="Settings" parent="." instance=ExtResource("7_jw5cq")]
+visible = false
+
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Shop_Button" to="." method="_on_shop_button_pressed"]

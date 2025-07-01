@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://byx41vvlsyjns"]
+
+[ext_resource type="Script" uid="uid://o5tf05v0hhiq" path="res://UI/Shop/UpgradeItem.gd" id="1_c23wd"]
+[ext_resource type="Texture2D" uid="uid://cabs2gn5uwygp" path="res://Data/Upgrades/assets/icon_heart.webp" id="2_wlok2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c23wd"]
+bg_color = Color(1, 0.756863, 0.027451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.960784, 0.592157, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlok2"]
+bg_color = Color(0.41, 0.310575, 0.0123, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.960784, 0.592157, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="UpgradeItem" type="Button"]
+custom_minimum_size = Vector2(150, 150)
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_c23wd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wlok2")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_c23wd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_c23wd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c23wd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c23wd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c23wd")
+script = ExtResource("1_c23wd")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 9.0
+offset_right = 60.0
+offset_bottom = 129.0
+grow_horizontal = 2
+texture = ExtResource("2_wlok2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 132.0
+offset_right = 55.0
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_c23wd")
+text = "5000"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxxw5eudxqv1s"]
+
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_7ot8v"]
+[ext_resource type="Script" uid="uid://cpfmvs70a40f8" path="res://Core/UpgradeRegistry.gd" id="1_aqljo"]
+[ext_resource type="Resource" uid="uid://c3oln6ynjr0qx" path="res://Data/Upgrades/Default/Default_HealthUpgradeData.tres" id="2_p2084"]
+[ext_resource type="Resource" uid="uid://dyqtyt62in7ne" path="res://Data/Upgrades/Default/Default_FirerateUpgradeData.tres" id="3_aqljo"]
+[ext_resource type="Resource" uid="uid://bxydd7b3x3o7u" path="res://Data/Upgrades/Default/Default_SpeedUpgradeData.tres" id="4_p2084"]
+[ext_resource type="Resource" uid="uid://cwmnximtkdn8g" path="res://Data/Upgrades/Thunderbolt/Thunderbolt_HealthUpgradeData.tres" id="7_7061t"]
+[ext_resource type="Resource" uid="uid://dr5wqkieh3bw3" path="res://Data/Upgrades/Thunderbolt/Thunderbolt_SpeedUpgradeData.tres" id="8_gdeqy"]
+[ext_resource type="Resource" uid="uid://dtb05okqadvts" path="res://Data/Upgrades/Thunderbolt/ThunderboltBulletLengthUpgradeData.tres" id="9_7061t"]
+[ext_resource type="Resource" uid="uid://80acpudrox7p" path="res://Data/Upgrades/EmeraldWyrm/EmeraldWyrm_HealthUpgradeData.tres" id="10_gdeqy"]
+
+[node name="UpgradeRegistry" type="Node"]
+script = ExtResource("1_aqljo")
+available_upgrades = Array[ExtResource("1_7ot8v")]([ExtResource("2_p2084"), ExtResource("3_aqljo"), ExtResource("4_p2084"), ExtResource("10_gdeqy"), ExtResource("7_7061t"), ExtResource("8_gdeqy"), ExtResource("9_7061t")])

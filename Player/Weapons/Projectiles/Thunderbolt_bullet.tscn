@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkk4gtr3b17v7"]
+
+[sub_resource type="GDScript" id="GDScript_30fxe"]
+resource_name = "ThunderboltBullet"
+script/source = "class_name LightningBolt
+extends Node2D
+
+const END_ANIMATION = [&\"Anim1\",&\"Anim2\"]
+
+##- Export Variables ----------------------------------------------------------##
+@export var damage: int = 1
+@export_group(\"Visuals\")
+@export var segments: int = 20
+@export var randomness: float = 0.5
+@export var fade_duration: float = 0.2
+@export var visibility_delay: float = 0.3
+
+##- Node References -----------------------------------------------------------##
+@onready var line_2d: Line2D = $Line2D
+
+##- Public API ----------------------------------------------------------------##
+
+func fire(start_point: Vector2, direction: Vector2, max_length: float) -> void:
+	global_position = start_point
+	var fire_direction = direction.normalized()
+	
+	var space_state = get_world_2d().direct_space_state
+	
+	var query_shape = RectangleShape2D.new()
+	query_shape.size = Vector2(max_length, 1)
+
+	var query_transform = Transform2D(fire_direction.angle(), start_point + fire_direction * max_length / 2.0)
+	
+	var shape_params = PhysicsShapeQueryParameters2D.new()
+	shape_params.shape = query_shape
+	shape_params.transform = query_transform
+	shape_params.collide_with_areas = true
+	shape_params.collide_with_bodies = true
+	shape_params.collision_mask = 2 
+	var all_collisions: Array[Dictionary] = space_state.intersect_shape(shape_params)
+	
+	var closest_enemy_collider: Node2D = null
+	var min_enemy_dist_sq = INF
+	
+	for collision in all_collisions:
+		var target: Node2D = collision.collider
+		if target.is_in_group(\"Enemy\"):
+			var dist_sq = start_point.distance_squared_to(target.global_position)
+			if dist_sq < min_enemy_dist_sq:
+				min_enemy_dist_sq = dist_sq
+				closest_enemy_collider = target
+
+	var final_end_point: Vector2
+	
+	if closest_enemy_collider != null:
+		var enemy_ray_params = PhysicsRayQueryParameters2D.create(start_point, closest_enemy_collider.global_position)
+		var hit_result = space_state.intersect_ray(enemy_ray_params)
+		
+		final_end_point = hit_result.position if hit_result else closest_enemy_collider.global_position
+		if closest_enemy_collider.has_method(\"take_damage\") and not closest_enemy_collider.get(\"_is_dead\"):
+			closest_enemy_collider.take_damage(damage)
+	else:
+		var boundary_ray_params = PhysicsRayQueryParameters2D.create(start_point, start_point + fire_direction * max_length)
+		var boundary_hit = space_state.intersect_ray(boundary_ray_params)
+		
+		if boundary_hit:
+			final_end_point = boundary_hit.position
+		else:
+			final_end_point = start_point + fire_direction * max_length
+	
+	line_2d.points = _generate_jagged_points(Vector2.ZERO, final_end_point - global_position)
+	_animate_fade_out()
+
+
+##- Private Helpers (Visuals) -------------------------------------------------##
+
+func _generate_jagged_points(start_pos: Vector2, end_pos: Vector2) -> PackedVector2Array:
+	var points: PackedVector2Array = [start_pos]
+	var direction_vector = end_pos - start_pos
+	
+	if segments <= 1 or direction_vector.is_zero_approx():
+		points.append(end_pos)
+		return points
+
+	var segment_length = direction_vector.length() / segments
+	var perpendicular = direction_vector.orthogonal().normalized()
+
+	for i in range(1, segments):
+		var point_on_line = start_pos.lerp(end_pos, float(i) / segments)
+		var random_offset = randf_range(-randomness, randomness) * segment_length
+		points.append(point_on_line + perpendicular * random_offset)
+
+	points.append(end_pos)
+	return points
+
+func _animate_fade_out():
+	line_2d.modulate.a = 1.0
+	var tween = create_tween()
+	tween.tween_property(line_2d, \"modulate:a\", 0.0, fade_duration)\\
+		 .from(1.0)\\
+		 .set_delay(visibility_delay)\\
+		 .set_trans(Tween.TRANS_QUINT)
+	tween.tween_callback(queue_free)
+"
+
+[sub_resource type="Curve" id="Curve_q6rn6"]
+_data = [Vector2(0, 0.190661), 0.0, 0.0, 0, 0, Vector2(0.222561, 0.642023), 0.0, 0.0, 0, 0, Vector2(0.375, 0.40856), 0.0, 0.0, 0, 0, Vector2(0.533537, 0.984436), 0.0, 0.0, 0, 0, Vector2(0.685976, 0.299611), 0.0, 0.0, 0, 0, Vector2(0.85061, 0.719844), 0.0, 0.0, 0, 0, Vector2(1, 0.159533), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Gradient" id="Gradient_c6qu2"]
+offsets = PackedFloat32Array(0, 0.173913, 0.304348, 0.384058, 0.463768, 0.543478, 0.681159, 0.818841, 1)
+colors = PackedColorArray(0.313726, 0.0509804, 0.396078, 1, 0.882353, 0.305882, 1, 1, 0.313726, 0.0509804, 0.396078, 1, 0.804829, 0.435026, 0.900778, 1, 0.882353, 0.305882, 1, 1, 0.313726, 0.0509804, 0.396078, 1, 0.882353, 0.305882, 1, 1, 0.815449, 0.461326, 0.907836, 1, 0.882353, 0.305882, 1, 1)
+
+[node name="ThunderboltBullet" type="Node2D"]
+script = SubResource("GDScript_30fxe")
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_q6rn6")
+gradient = SubResource("Gradient_c6qu2")

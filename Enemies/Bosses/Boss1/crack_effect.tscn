@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4bc7pll44ndn"]
+
+[ext_resource type="Shader" uid="uid://d3yt42wbvp64l" path="res://Enemies/Bosses/Boss1/crack_effect.gdshader" id="1_dvk1v"]
+[ext_resource type="Texture2D" uid="uid://dcsmh7q1yuhlx" path="res://Enemies/Bosses/Boss1/assets/Crack.webp" id="2_tpc7g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpc7g"]
+shader = ExtResource("1_dvk1v")
+shader_parameter/crack_texture = ExtResource("2_tpc7g")
+shader_parameter/fill_color = Color(0.337255, 0.00784314, 0.00392157, 1)
+shader_parameter/glow_color = Color(0.745098, 0.0666667, 0.054902, 1)
+shader_parameter/progress = 0.0
+shader_parameter/edge_softness = 0.1
+shader_parameter/glow_radius = 10.0
+shader_parameter/glow_intensity = 1.0
+
+[sub_resource type="Animation" id="Animation_fig2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tpc7g"]
+resource_name = "start_crack"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ln63"]
+_data = {
+&"RESET": SubResource("Animation_fig2h"),
+&"start_crack": SubResource("Animation_tpc7g")
+}
+
+[node name="crack_effect" type="Sprite2D"]
+material = SubResource("ShaderMaterial_tpc7g")
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_tpc7g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7ln63")
+}
+autoplay = "start_crack"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxlp1ptldiprs"]
+
+[ext_resource type="Script" uid="uid://bei53ee86q0n8" path="res://Player/Weapons/Projectiles/lunar_phantom_laser_beam.gd" id="1_7pxdn"]
+[ext_resource type="Shader" uid="uid://4w00i6jkbdmw" path="res://Player/Weapons/Projectiles/assets/EnergyBeams.gdshader" id="2_17x82"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4mxo"]
+shader = ExtResource("2_17x82")
+shader_parameter/beams = 2
+shader_parameter/energy = 18.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 4
+shader_parameter/speed = 5.0
+shader_parameter/thickness = 0.035
+shader_parameter/outline_thickness = 0.03
+shader_parameter/beam_difference = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/color = Color(0.582116, 0.998608, 0.999717, 1)
+shader_parameter/outline_color = Color(0.0784314, 0.211765, 0.454902, 1)
+shader_parameter/glow_color = Color(0.1, 0.7, 1, 1)
+shader_parameter/glow_thickness = 0.2
+shader_parameter/glow_falloff = 0.27
+
+[node name="LunarPhantomLaserBeam" type="Node2D"]
+position = Vector2(-62, -39)
+script = ExtResource("1_7pxdn")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Visual" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_l4mxo")
+layout_direction = 2
+offset_left = -62.0
+offset_top = 23.0
+offset_right = 338.0
+offset_bottom = 147.0
+rotation = -1.5708
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

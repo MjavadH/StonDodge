@@ -1,0 +1,160 @@
+[gd_scene load_steps=7 format=3 uid="uid://ib7lvie7a70b"]
+
+[ext_resource type="Script" uid="uid://cimomrli8ws7e" path="res://UI/GameOver/GameOverScreen.gd" id="1_lhre1"]
+[ext_resource type="Shader" uid="uid://drcqqishffaf4" path="res://World/Assets/main.gdshader" id="2_urmxa"]
+[ext_resource type="Texture2D" uid="uid://crvd6jl7ykeyr" path="res://UI/Assets/button.webp" id="3_ctyv0"]
+[ext_resource type="Script" uid="uid://ce6ocn8vf4b1w" path="res://UI/Components/CountingLabel.gd" id="4_bwvvp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsfmr"]
+shader = ExtResource("2_urmxa")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/speed = 0.2
+shader_parameter/density = 145.0
+shader_parameter/compression = 0.5
+shader_parameter/trail_size = 100.0
+shader_parameter/brightness = 0.8
+
+[sub_resource type="Theme" id="Theme_mgbnj"]
+Label/colors/font_color = Color(1, 0.960784, 0.592157, 1)
+Label/colors/font_outline_color = Color(1, 0.15, 0.164166, 1)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 20
+Label/constants/paragraph_spacing = -50
+Label/font_sizes/font_size = 200
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_lhre1")
+
+[node name="background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lsfmr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Restart_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -520.0
+offset_right = -562.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 84
+text = "Again"
+icon = ExtResource("3_ctyv0")
+flat = true
+icon_alignment = 1
+
+[node name="Back_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 580.0
+offset_top = -520.0
+offset_right = -62.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 84
+text = "Back"
+icon = ExtResource("3_ctyv0")
+flat = true
+icon_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 624.0
+grow_horizontal = 2
+theme = SubResource("Theme_mgbnj")
+text = "GAME
+OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.382
+anchor_right = 1.0
+anchor_bottom = 0.644
+offset_top = -0.440063
+offset_bottom = 0.519897
+
+[node name="RoundScoreLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 68
+text = "Round Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_bwvvp")
+prefix = "Round Score: "
+
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 68
+text = "High Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_bwvvp")
+prefix = "High Score: "
+
+[node name="TotalScoreLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 68
+text = "Total Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("4_bwvvp")
+prefix = "Total Score: "
+
+[connection signal="pressed" from="Restart_Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Back_Button" to="." method="_on_back_button_pressed"]

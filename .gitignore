@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.vscode/
+
+# Import cache
+.godot/imported/
+.godot/shader_cache/
+
+# User-specific settings
+.godot/editor/
+.godot/mono/
+
+# Export templates and binaries
+export_presets.cfg
+*.binary
+*.exe
+*.dll
+*.so
+*.a
+*.zip
+*.apk
+*.aab
+
+# Mono/C# build files
+/bin/
+/obj/
+.mono/

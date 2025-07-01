@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnctm470dd28i"]
+
+[ext_resource type="Texture2D" uid="uid://bupq4amm0vtkj" path="res://Player/Weapons/Projectiles/assets/EmeraldWyrm_bullet.webp" id="1_q3yp6"]
+
+[sub_resource type="GDScript" id="GDScript_q3yp6"]
+resource_name = "EmeraldWyrm_bullet"
+script/source = "extends Area2D
+
+const SPEED := 1200
+
+func _process(delta: float) -> void:
+	position.y -= SPEED * delta
+
+func _on_area_entered(area: Area2D) -> void:
+	_handle_hit(area)
+
+func _on_body_entered(body: Node2D) -> void:
+	_handle_hit(body)
+
+func _handle_hit(target: Node) -> void:
+	if target.is_in_group(\"Enemy\") and not target.get(\"_is_dead\"):
+		if target.has_method(\"take_damage\"):
+			target.take_damage(1)
+			queue_free()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8rjk"]
+height = 37.0
+
+[node name="EmeraldWyrmBullet" type="Area2D"]
+collision_mask = 2
+script = SubResource("GDScript_q3yp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q3yp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("CapsuleShape2D_e8rjk")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

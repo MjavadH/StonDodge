@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dyqtyt62in7ne"]
+
+[ext_resource type="Texture2D" uid="uid://d2p7lxexaf2dr" path="res://Data/Upgrades/assets/iconfirerate.webp" id="1_70avx"]
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_1d0qu"]
+
+[resource]
+script = ExtResource("2_1d0qu")
+id = &"default_firerate_upgrade"
+icon = ExtResource("1_70avx")
+max_level = 2
+cost_per_level = Array[int]([700, 700])
+value_per_level = [0.4, 0.3]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

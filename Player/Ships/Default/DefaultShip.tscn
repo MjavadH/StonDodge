@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://12pvslevyquc"]
+
+[ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_mdgya"]
+[ext_resource type="Texture2D" uid="uid://cv8svikhc3l15" path="res://Player/Ships/Default/assets/fly_damage1.webp" id="2_i375c"]
+[ext_resource type="Texture2D" uid="uid://toppclssy8cu" path="res://Player/Ships/Default/assets/fly.webp" id="3_lc43b"]
+[ext_resource type="Texture2D" uid="uid://dygafrsq5hxoa" path="res://Player/Ships/Default/assets/fly_damage2.webp" id="4_cy6a6"]
+[ext_resource type="Texture2D" uid="uid://drb3f4q7iksad" path="res://Player/Ships/Default/assets/fly_off.webp" id="5_r75mg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_un5me"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_i375c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lc43b")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_cy6a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lc43b")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r75mg")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lc43b")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="BaseShip" instance=ExtResource("1_mdgya")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_un5me")
+animation = &"up"
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="7"]
+build_mode = 1
+polygon = PackedVector2Array(0, -65, 2, -64, 3, -61, 2, -58, 2, -51, 7, -47, 14, -36, 21, -15, 50, 5, 51, 25, 47, 28, 29, 30, 29, 41, 26, 44, 16, 44, 13, 41, 7, 52, 3, 55, -4, 55, -11, 47, -14, 40, -16, 43, -19, 44, -26, 44, -28, 42, -30, 39, -30, 30, -47, 28, -51, 23, -51, 6, -20, -16, -15, -35, -8, -46, -3, -51, -3, -51, -2, -58, -4, -61, -3, -64)
+metadata/_edit_group_ = true

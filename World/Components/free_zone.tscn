@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rvrodyo67gq3"]
+
+[ext_resource type="Script" uid="uid://bqwglqhik2owi" path="res://World/Components/free_zone.gd" id="1_kaydh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_inojc"]
+
+[node name="FreeZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_kaydh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_inojc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

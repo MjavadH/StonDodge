@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://dcvqav1448djf"]
+
+[ext_resource type="Texture2D" uid="uid://csosy1f51cdv8" path="res://Player/Ships/EmeraldWyrm/assets/EmeraldWyrmShipIcon.webp" id="1_mrm1x"]
+[ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_watul"]
+[ext_resource type="PackedScene" uid="uid://cwgqsh7qi22n5" path="res://Player/Ships/EmeraldWyrm/EmeraldWyrm.tscn" id="2_kma6d"]
+
+[resource]
+script = ExtResource("1_watul")
+id = &"EmeraldWyrm"
+ship_name = "Emerald Wyrm"
+icon = ExtResource("1_mrm1x")
+cost = 2000
+ship_scene = ExtResource("2_kma6d")
+available_upgrade_ids = Array[StringName]([&"emeraldwyrm_health_upgrade", &"default_firerate_upgrade", &"thunderbolt_speed_upgrade"])
+metadata/_custom_type_script = "uid://dvkagn0jer5ew"

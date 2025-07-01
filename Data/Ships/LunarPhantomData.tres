@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://c521p21pbayiv"]
+
+[ext_resource type="Texture2D" uid="uid://co3rs80i65xjj" path="res://Player/Ships/LunarPhantom/assets/LunarPhantomShipIcon.webp" id="1_id66m"]
+[ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_t23h8"]
+[ext_resource type="PackedScene" uid="uid://b8xiyuhnkyt7s" path="res://Player/Ships/LunarPhantom/LunarPhantom.tscn" id="3_xcu5u"]
+
+[resource]
+script = ExtResource("1_t23h8")
+id = &"LunarPhantom"
+ship_name = "LunarPhantom"
+icon = ExtResource("1_id66m")
+cost = 20000
+ship_scene = ExtResource("3_xcu5u")
+available_upgrade_ids = Array[StringName]([])
+metadata/_custom_type_script = "uid://dvkagn0jer5ew"
