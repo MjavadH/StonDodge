@@ -27,7 +27,7 @@ const PAYLOAD_SCENE: PackedScene = preload("res://World/Payload/Payload.tscn")
 @onready var players: Node = $Players
 
 ##- Private Variables ---------------------------------------------------------##
-var _boss_wave: int = 4
+var _boss_wave: int = 0
 var _player_instance: BaseShip 
 var _payload_instance: Payload = null
 var _minidrone_instance: MiniDrone = null
