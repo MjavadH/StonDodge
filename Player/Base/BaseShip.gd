@@ -33,6 +33,7 @@ var id: StringName
 var _is_dead: bool = false
 var _is_cooldown: bool = false
 var _is_invincible: bool = false
+var _is_took_damage: bool = false
 var _is_speed_bonus_active: bool = false
 var _is_bullet_speed_bonus_active: bool = false
 var _shoot_sound_pool: Array[AudioStreamPlayer] = []
@@ -139,6 +140,7 @@ func take_damage(amount: int) -> void:
 		return
 		
 	_is_invincible = true
+	_is_took_damage = true
 	health = max(0, health - amount)
 	health_updated.emit(health, max_health)
 	
@@ -265,7 +267,7 @@ func _stop_weapon() -> void:
 
 ##- Private Helpers & Animation -----------------------------------------------##
 func _handle_animation(current_velocity: Vector2) -> void:
-	if _is_invincible:
+	if _is_took_damage:
 		animated_sprite.play("damaged")
 		return
 
@@ -334,6 +336,7 @@ func _play_sound_from_pool() -> void:
 ##- Signal Handlers -----------------------------------------------------------##
 func _on_invincibility_timer_timeout() -> void:
 	_is_invincible = false
+	_is_took_damage = false
 
 func _on_explosion_anim_animation_finished() -> void:
 	died.emit()
