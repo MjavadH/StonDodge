@@ -9,14 +9,12 @@ var _current_state = State.ARMING
 
 @onready var damage_area: Area2D = $DamageArea
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sound: AudioStreamPlayer = $AudioStreamPlayer
 @onready var arming_timer: Timer = $ArmingTimer
 
 func _ready() -> void:
 	arming_timer.wait_time = arming_delay
 	arming_timer.start()
 	animation.play("explode")
-	sound.play()
 
 func _on_arming_finished():
 	_current_state = State.ACTIVE

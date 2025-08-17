@@ -26,6 +26,8 @@ var explosive_power: int = 1
 @onready var solar_flare_visual: ColorRect = $SolarFlareRadius/SolarFlareVisual
 @onready var solar_flare_timer: Timer = $SolarFlareTimer
 @onready var solar_flare_tick_timer: Timer = $SolarFlareTickTimer
+@onready var solar_flare_sound: AudioStreamPlayer = $SolarFlareSound
+@onready var dash_sound: AudioStreamPlayer = $DashSound
 
 ##- Godot Engine Functions ----------------------------------------------------##
 
@@ -74,8 +76,10 @@ func _activate_special_ability(ability_id: StringName) -> void:
 				_current_state = State.DASHING
 				dash_hitbox.monitoring = true
 				velocity = Vector2.UP * dash_speed
+				dash_sound.play()
 				dash_timer.start()
 		&"solar_flare":
+			solar_flare_sound.play()
 			solar_flare_radius.monitoring = true
 			solar_flare_visual.show()
 			solar_flare_timer.start()

@@ -12,6 +12,7 @@ const LEAP_EFFECT_SCENE: PackedScene = preload("res://Player/Ships/Thunderbolt/A
 
 @onready var thunderstorm_timer: Timer = $ThunderstormTimer
 @onready var thunderstorm_cooldown_timer: Timer = $ThunderstormCooldownTimer
+@onready var thunder_leap_sound: AudioStreamPlayer = $ThunderLeapSound
 
 var _bullet_length: int
 var top_spawner: PathFollow2D
@@ -105,6 +106,7 @@ func _execute_thunder_leap():
 	var screen_height = get_viewport_rect().size.y
 	var leap_vector = Vector2.UP * screen_height * leap_distance_ratio
 	global_position += leap_vector
+	thunder_leap_sound.play()
 	_spawn_leap_explosion(global_position)
 
 func _spawn_leap_explosion(pos: Vector2):

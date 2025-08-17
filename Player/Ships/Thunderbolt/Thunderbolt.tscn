@@ -1,10 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://knh3likqgnqc"]
+[gd_scene load_steps=38 format=3 uid="uid://knh3likqgnqc"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_v7hqp"]
 [ext_resource type="Texture2D" uid="uid://cmdunp4ckvmbe" path="res://Player/Ships/Thunderbolt/assets/Damaged.webp" id="2_1pyf5"]
 [ext_resource type="Script" uid="uid://cousbvjqxplxh" path="res://Player/Ships/Thunderbolt/Thunderbolt.gd" id="2_r1ff7"]
 [ext_resource type="Texture2D" uid="uid://drb7up15qt7tb" path="res://Player/Ships/Thunderbolt/assets/fly_off.webp" id="5_58hu5"]
 [ext_resource type="Texture2D" uid="uid://c1q3o2ib2tlhi" path="res://Player/Ships/Thunderbolt/assets/fly.webp" id="6_k1pag"]
+[ext_resource type="AudioStream" uid="uid://bp81pfhsam2h2" path="res://Player/Ships/Thunderbolt/Abilities/ThunderLeap/TeleportSound.ogg" id="6_sddl4"]
+[ext_resource type="AudioStream" uid="uid://bnlb727nvgmyc" path="res://Player/Ships/Thunderbolt/Abilities/ThunderLeap/ExplodeSound.ogg" id="7_vrqmr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1ff7"]
 atlas = ExtResource("2_1pyf5")
@@ -220,6 +222,12 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_58hu5"]
+loop = false
+stream_count = 2
+stream_0 = ExtResource("6_sddl4")
+stream_1 = ExtResource("7_vrqmr")
+
 [node name="Thunderbolt" instance=ExtResource("1_v7hqp")]
 script = ExtResource("2_r1ff7")
 leap_distance_ratio = 0.2
@@ -239,6 +247,10 @@ wait_time = 8.0
 
 [node name="ThunderstormCooldownTimer" type="Timer" parent="." index="11"]
 wait_time = 0.1
+
+[node name="ThunderLeapSound" type="AudioStreamPlayer" parent="." index="12"]
+stream = SubResource("AudioStreamPlaylist_58hu5")
+bus = &"efx"
 
 [connection signal="timeout" from="ThunderstormTimer" to="." method="_on_thunderstorm_timer_timeout"]
 [connection signal="timeout" from="ThunderstormCooldownTimer" to="." method="_on_thunderstorm_cooldown_timer_timeout"]

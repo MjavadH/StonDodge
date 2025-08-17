@@ -116,8 +116,6 @@ animation = &"explode"
 frame = 11
 frame_progress = 1.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [node name="ArmingTimer" type="Timer" parent="."]
 wait_time = 0.1
 
