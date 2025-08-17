@@ -4,18 +4,43 @@ extends BaseShip
 const BULLET_SCENE: PackedScene = preload("res://Player/Ships/SolarDragon/Weapons/SolarPulse/SolarPulse.tscn")
 const SHOOT_SOUND: AudioStream = preload("res://Player/Ships/SolarDragon/Weapons/SolarPulse/assets/Charge.ogg")
 
+@export_group("Photon Dash")
+@export var dash_speed: float = 3000.0
+@export var dash_duration: float = 0.3
+@export var dash_damage: int = 10 # High damage to destroy most enemies instantly
 
+##- State Machine -------------------------------------------------------------##
+enum State { NORMAL, DASHING }
+var _current_state = State.NORMAL
+
+##- Private Variables ---------------------------------------------------------##
 var power_orbit: float = 100.0
 var charge_speed_scale: float = 1.0
 var explosive_power: int = 1
+
+##- Node References -----------------------------------------------------------##
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_hitbox: Area2D = $DashHitbox
+
+##- Godot Engine Functions ----------------------------------------------------##
+
+func _physics_process(delta: float):
+	match _current_state:
+		State.NORMAL:
+			super._physics_process(delta)
+		State.DASHING:
+			move_and_slide()
+
 ##- "Virtual" Methods ---------------------------------------------------------##
 
 func _initialize_stats() -> void:
+	super._initialize_stats()
 	max_health = 10
 	speed = 1200.0
 	shoot_timer.wait_time = 0.5
 	_base_speed = speed
 	_base_shoot_cooldown = shoot_timer.wait_time
+	dash_timer.wait_time = dash_duration
 
 func _apply_purchased_upgrades() -> void:
 	var ship_data: ShipData = EquipmentRegistry.get_ship_data(self.id)
@@ -37,6 +62,13 @@ func _apply_purchased_upgrades() -> void:
 					explosive_power = effect_value
 
 func _activate_special_ability(ability_id: StringName) -> void:
+	if ability_id == &"photon_dash" and _current_state == State.NORMAL:
+		_is_invincible = true
+		_current_state = State.DASHING
+		dash_hitbox.monitoring = true
+		velocity = Vector2.UP * dash_speed
+		dash_timer.start()
+	
 	_start_ability_cooldown(ability_id)
 
 func _initialize_audio() -> void:
@@ -63,3 +95,17 @@ func _fire_weapon() -> void:
 	bullet.global_position = bullet_spawn_point.global_position
 
 ##- Signal Handlers -----------------------------------------------------------##
+
+func _on_dash_timer_timeout() -> void:
+	_current_state = State.NORMAL
+	dash_hitbox.monitoring = false
+	self.self_modulate = Color.from_rgba8(255,200,0,128)
+	await get_tree().create_timer(1.5).timeout
+	_is_invincible = false
+	self.self_modulate = Color.WHITE
+
+func _on_dash_hitbox_entered(target: Node2D):
+	if target.is_in_group("Enemy") and target.has_method("take_damage"):
+		target.take_damage(dash_damage)
+		if target.is_in_group("Boss"):
+			_current_state = State.NORMAL

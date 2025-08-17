@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d025xmr31vha1"]
+[gd_scene load_steps=29 format=3 uid="uid://d025xmr31vha1"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_bshm3"]
 [ext_resource type="Texture2D" uid="uid://d1gfrpq4j4yq8" path="res://Player/Ships/SolarDragon/assets/damaged.webp" id="2_4mpi5"]
@@ -177,13 +177,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmre1"]
+size = Vector2(154, 138)
+
 [node name="SolarDragon" instance=ExtResource("1_bshm3")]
 script = ExtResource("2_tmre1")
+dash_speed = 3000.0
+dash_duration = 0.3
+dash_damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_tmre1")
 animation = &"up"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="9"]
+[node name="DashHitbox" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox" index="0"]
+shape = SubResource("RectangleShape2D_tmre1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="10"]
 build_mode = 1
 polygon = PackedVector2Array(-30, -15, -24, -24, -25, -34, -23, -37, -23, -49, -12, -57, -10, -50, -4, -62, 4, -65, -1, -49, 15, -56, 11, -46, 24, -32, 26, -12, 17, 2, 41, -12, 59, -26, 55, 3, 45, 20, 13, 33, 16, 43, 16, 64, 6, 59, 2, 35, -3, 63, -8, 60, -17, 36, -22, 55, -33, 64, -33, 53, -23, 25, -40, 27, -53, 16, -59, -4, -57, -27, -42, -12, -33, 5, -27, 14, -13, -3, -17, -11, -23, -7)
+
+[node name="DashTimer" type="Timer" parent="." index="11"]
+one_shot = true
+
+[connection signal="area_entered" from="DashHitbox" to="." method="_on_dash_hitbox_entered"]
+[connection signal="body_entered" from="DashHitbox" to="." method="_on_dash_hitbox_entered"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
