@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_8if7q")
-id = &"Thunderstorm"
-display_name = "Thunderstorm"
+id = &"thunder_leap"
+display_name = "Thunder Leap"
 icon = ExtResource("1_nrciu")
-cooldown_duration = 50.0
+cooldown_duration = 20.0
 metadata/_custom_type_script = "uid://b3bphqh86dvme"

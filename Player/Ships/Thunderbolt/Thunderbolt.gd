@@ -4,6 +4,11 @@ extends BaseShip
 const BULLET_SCENE: PackedScene = preload("res://Player/Ships/Thunderbolt/Weapons/Thunderbolt_bullet.tscn")
 const SHOOT_SOUND: AudioStream = preload("res://Player/Ships/Thunderbolt/assets/Thunderbolt_bullet_sound.ogg")
 const THUNDERSTORM_SOUND: AudioStream = preload("res://Player/Ships/Thunderbolt/assets/ThunderstormSound.ogg")
+const LEAP_EFFECT_SCENE: PackedScene = preload("res://Player/Ships/Thunderbolt/Abilities/ThunderLeap/LeapExplosion.tscn")
+
+@export_group("Thunder Leap")
+@export var leap_distance_ratio: float = 0.2 # 20% of the screen height
+@export var leap_damage: int = 10
 
 @onready var thunderstorm_timer: Timer = $ThunderstormTimer
 @onready var thunderstorm_cooldown_timer: Timer = $ThunderstormCooldownTimer
@@ -46,6 +51,9 @@ func _activate_special_ability(ability_id: StringName) -> void:
 		&"Thunderstorm":
 			thunderstorm_cooldown_timer.start()
 			thunderstorm_timer.start()
+		&"thunder_leap":
+			_is_invincible = true
+			_execute_thunder_leap()
 
 	_start_ability_cooldown(ability_id)
 
@@ -92,6 +100,22 @@ func _on_thunderstorm_cooldown_timer_timeout() -> void:
 		bullet.fire(top_spawner.global_position,Vector2.DOWN,randf_range(400, _bullet_length * 1.4))
 		_play_thunderstorm_sound_from_pool()
 
+func _execute_thunder_leap():
+	_spawn_leap_explosion(global_position)
+	var screen_height = get_viewport_rect().size.y
+	var leap_vector = Vector2.UP * screen_height * leap_distance_ratio
+	global_position += leap_vector
+	_spawn_leap_explosion(global_position)
+
+func _spawn_leap_explosion(pos: Vector2):
+	var explosion: LeapExplosion = LEAP_EFFECT_SCENE.instantiate()
+	explosion.damage = leap_damage
+	explosion.global_position = pos
+	get_tree().current_scene.add_child(explosion)
+	self.modulate = Color.from_rgba8(190,0,255,128)
+	await get_tree().create_timer(1.5).timeout
+	_is_invincible = false
+	self.modulate = Color.WHITE
 
 func _on_thunderstorm_timer_timeout() -> void:
 	thunderstorm_cooldown_timer.stop()

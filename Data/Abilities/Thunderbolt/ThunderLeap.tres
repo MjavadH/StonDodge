@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://clvvlqa33mab0"]
+
+[ext_resource type="Texture2D" uid="uid://ccp5om5n4x3yn" path="res://Data/Abilities/assets/Thunderstorm.webp" id="1_vgx2f"]
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="2_sklr7"]
+
+[resource]
+script = ExtResource("2_sklr7")
+id = &"Thunderstorm"
+display_name = "Thunderstorm"
+icon = ExtResource("1_vgx2f")
+cooldown_duration = 50.0
+metadata/_custom_type_script = "uid://b3bphqh86dvme"

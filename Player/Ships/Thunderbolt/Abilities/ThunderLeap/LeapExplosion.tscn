@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://dqbysmfulqnyx"]
+
+[ext_resource type="Script" uid="uid://iy2rrg5o71tr" path="res://Player/Ships/Thunderbolt/Abilities/ThunderLeap/LeapExplosion.gd" id="1_scsac"]
+[ext_resource type="Texture2D" uid="uid://ca3nqml4p2uh7" path="res://Player/Ships/Thunderbolt/Abilities/ThunderLeap/explode.webp" id="2_mvbhl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6j7aj"]
+radius = 150.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4flf"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rys8p"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgdpb"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utvch"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoi6f"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54iej"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro60r"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn6b5"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrexs"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn8ro"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ami2j"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hni4p"]
+atlas = ExtResource("2_mvbhl")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvbhl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4flf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rys8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgdpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utvch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoi6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54iej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro60r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn6b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrexs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn8ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ami2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hni4p")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[node name="LeapExplosion" type="Node2D"]
+script = ExtResource("1_scsac")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_6j7aj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mvbhl")
+animation = &"explode"
+frame = 11
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ArmingTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="ArmingTimer" to="." method="_on_arming_finished"]

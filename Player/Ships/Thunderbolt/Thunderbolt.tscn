@@ -222,6 +222,8 @@ animations = [{
 
 [node name="Thunderbolt" instance=ExtResource("1_v7hqp")]
 script = ExtResource("2_r1ff7")
+leap_distance_ratio = 0.2
+leap_damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_fu502")
