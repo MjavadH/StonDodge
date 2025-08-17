@@ -1,21 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7r7ju1ydy6t5"]
+[gd_scene load_steps=25 format=3 uid="uid://b7r7ju1ydy6t5"]
 
 [ext_resource type="Script" uid="uid://dx2x01gefbsgr" path="res://UI/StartMenu/start.gd" id="1_3v0vt"]
-[ext_resource type="Shader" uid="uid://drcqqishffaf4" path="res://World/Assets/main.gdshader" id="1_c8l3o"]
-[ext_resource type="Texture2D" uid="uid://crvd6jl7ykeyr" path="res://UI/Assets/button.webp" id="3_rc2ob"]
+[ext_resource type="PackedScene" uid="uid://c06pcay13c6hp" path="res://World/Components/background.tscn" id="2_8mckp"]
 [ext_resource type="Texture2D" uid="uid://toppclssy8cu" path="res://Player/Ships/Default/assets/fly.webp" id="5_h4gb8"]
+[ext_resource type="Texture2D" uid="uid://bi8thtgdb2yb3" path="res://UI/Assets/ClassicIcon.svg" id="6_8mckp"]
+[ext_resource type="Texture2D" uid="uid://fxaibxj511hn" path="res://UI/Assets/SurvivalIcon.svg" id="7_8mckp"]
 [ext_resource type="Texture2D" uid="uid://b2rgxmu10k5fj" path="res://UI/Assets/LogoType.webp" id="7_alxum"]
 [ext_resource type="PackedScene" uid="uid://rv1wlptx1or7" path="res://UI/Settings/settings.tscn" id="7_jw5cq"]
+[ext_resource type="Texture2D" uid="uid://xvvt0nopfa0d" path="res://UI/Assets/BossRushIcon.svg" id="8_8mckp"]
+[ext_resource type="Texture2D" uid="uid://boevveb1ouf1o" path="res://UI/Assets/BlackoutIcon.svg" id="9_8mckp"]
+[ext_resource type="Texture2D" uid="uid://fgwgrqd5me2g" path="res://UI/Assets/CloseIcon.svg" id="10_8mckp"]
+[ext_resource type="Texture2D" uid="uid://dtqf2kijicbub" path="res://UI/Assets/PayloadEscortIcon.svg" id="10_nqtrk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_alxum"]
-shader = ExtResource("1_c8l3o")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/background_color = Color(0, 0, 0, 1)
-shader_parameter/speed = 0.2
-shader_parameter/density = 145.0
-shader_parameter/compression = 0.5
-shader_parameter/trail_size = 100.0
-shader_parameter/brightness = 0.8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4wxv"]
+bg_color = Color(0.207843, 0.211765, 0.239216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s14ro"]
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4gb8"]
+bg_color = Color(0.207843, 0.211765, 0.239216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf8ov"]
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="Curve2D" id="Curve2D_a7sdg"]
 _data = {
@@ -23,71 +66,162 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgh2e"]
+bg_color = Color(0.117647, 0.121569, 0.141176, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.192157, 0.2, 0.231373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 20
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mckp"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.207843, 0.211765, 0.239216, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.290196, 0.298039, 0.333333, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqtrk"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.247059, 0.25098, 0.282353, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.360784, 0.368627, 0.407843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl5fq"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id="Animation_s14ro"]
+resource_name = "CloseGameModeModal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameModeModal:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameModeModal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bf8ov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameModeModal:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameModeModal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h4gb8"]
+resource_name = "ShowGameModeModal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameModeModal:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameModeModal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s14ro"]
+_data = {
+&"CloseGameModeModal": SubResource("Animation_s14ro"),
+&"RESET": SubResource("Animation_bf8ov"),
+&"ShowGameModeModal": SubResource("Animation_h4gb8")
+}
+
 [node name="Start" type="CanvasLayer"]
 script = ExtResource("1_3v0vt")
 
-[node name="background" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_alxum")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Quit_Button" type="Button" parent="."]
-layout_direction = 2
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -470.0
-offset_right = 498.0
-offset_bottom = -195.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 84
-text = "Quit"
-icon = ExtResource("3_rc2ob")
-flat = true
-icon_alignment = 1
-
-[node name="Settings_Button" type="Button" parent="."]
-layout_direction = 2
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -490.0
-offset_top = -470.0
-offset_right = -52.0
-offset_bottom = -195.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 60
-text = "Settings"
-icon = ExtResource("3_rc2ob")
-flat = true
-icon_alignment = 1
+[node name="Background" parent="." instance=ExtResource("2_8mckp")]
 
 [node name="Start_Button" type="Button" parent="."]
 layout_direction = 2
@@ -96,24 +230,25 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -490.0
-offset_top = -820.0
-offset_right = -52.0
-offset_bottom = -545.0
+offset_left = -469.0
+offset_top = -783.0
+offset_right = -25.0
+offset_bottom = -533.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 84
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s14ro")
 text = "Start"
-icon = ExtResource("3_rc2ob")
-flat = true
 icon_alignment = 1
 
 [node name="Shop_Button" type="Button" parent="."]
@@ -123,24 +258,83 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -820.0
-offset_right = 498.0
-offset_bottom = -545.0
+offset_left = 28.0
+offset_top = -783.0
+offset_right = 472.0
+offset_bottom = -533.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 84
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s14ro")
 text = "Shop"
-icon = ExtResource("3_rc2ob")
-flat = true
+icon_alignment = 1
+
+[node name="Quit_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -420.0
+offset_right = 472.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s4wxv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s14ro")
+text = "Quit"
+icon_alignment = 1
+
+[node name="Settings_Button" type="Button" parent="."]
+layout_direction = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -469.0
+offset_top = -420.0
+offset_right = -25.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_h4gb8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_h4gb8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h4gb8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h4gb8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bf8ov")
+text = "Settings"
+autowrap_mode = 1
 icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -150,11 +344,13 @@ offset_bottom = 734.0
 grow_horizontal = 2
 texture = ExtResource("7_alxum")
 stretch_mode = 3
+metadata/_edit_lock_ = true
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(-163, 458)
 rotation = -0.598552
 curve = SubResource("Curve2D_a7sdg")
+metadata/_edit_lock_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(613, 1073)
@@ -165,9 +361,188 @@ rotation = 1.78024
 texture = ExtResource("5_h4gb8")
 
 [node name="Settings" parent="." instance=ExtResource("7_jw5cq")]
+layer = 2
 visible = false
 
-[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]
+[node name="GameModeModal" type="Panel" parent="."]
+visible = false
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -375.0
+offset_right = 500.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(500, 375)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pgh2e")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameModeModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GameModeModal/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameModeModal/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_font_sizes/font_size = 80
+text = "Game mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="HFlowContainer" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 50
+alignment = 1
+
+[node name="ClassicButton" type="Button" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_focus_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mckp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nqtrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5fq")
+text = "Classic"
+icon = ExtResource("6_8mckp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="SurvivalButton" type="Button" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_focus_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mckp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nqtrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5fq")
+text = "Survival"
+icon = ExtResource("7_8mckp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="BossRushButton" type="Button" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_focus_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mckp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nqtrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5fq")
+text = "Boss Rush"
+icon = ExtResource("8_8mckp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="BlackoutButton" type="Button" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_focus_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mckp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nqtrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5fq")
+text = "Blackout"
+icon = ExtResource("9_8mckp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PayloadEscortButton" type="Button" parent="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_focus_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mckp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nqtrk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5fq")
+text = "Payload Escort"
+icon = ExtResource("10_nqtrk")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="CloseModalButton" type="TextureButton" parent="GameModeModal"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 96.0
+grow_horizontal = 0
+texture_normal = ExtResource("10_8mckp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s14ro")
+}
+
 [connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Shop_Button" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Quit_Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/ClassicButton" to="." method="_on_classic_button_pressed"]
+[connection signal="pressed" from="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/SurvivalButton" to="." method="_on_survival_button_pressed"]
+[connection signal="pressed" from="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/BossRushButton" to="." method="_on_boss_rush_button_pressed"]
+[connection signal="pressed" from="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/BlackoutButton" to="." method="_on_blackout_button_pressed"]
+[connection signal="pressed" from="GameModeModal/MarginContainer/ScrollContainer/VBoxContainer/GridContainer/PayloadEscortButton" to="." method="_on_payload_escort_button_pressed"]
+[connection signal="pressed" from="GameModeModal/CloseModalButton" to="." method="_on_close_modal_button_pressed"]

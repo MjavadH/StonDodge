@@ -15,7 +15,7 @@ config/name_localized={
 "en": "StonDodge",
 "fa": "شهاب‌گریز"
 }
-config/version="3.0.0"
+config/version="5.1.0"
 run/main_scene="uid://b7r7ju1ydy6t5"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
@@ -31,9 +31,11 @@ config/icon="uid://241kc1m3gue0"
 EquipmentRegistry="*res://Core/EquipmentRegistry.tscn"
 UpgradeRegistry="*res://Core/UpgradeRegistry.tscn"
 GameManager="*res://Core/GameManager.gd"
+PerformanceManager="*res://Core/PerformanceManager.gd"
 MeteorRegistry="*res://Core/MeteorRegistry.tscn"
 BossManager="*res://Core/BossManager.tscn"
-MusicPlayer="*res://Core/MusicPlayer.gd"
+BonusRegistry="*res://Core/BonusRegistry.tscn"
+MusicPlayer="*res://Core/MusicPlayer.tscn"
 
 [display]
 
@@ -54,6 +56,10 @@ version_control/autoload_on_startup=true
 folder_colors={
 "res://Core/": "purple",
 "res://Enemies/": "red",
+"res://Enemies/Bosses/GeodeBoss/": "purple",
+"res://Enemies/Bosses/PrismBoss/": "green",
+"res://Enemies/Bosses/SkyLancerBoss/": "blue",
+"res://Enemies/Bosses/VortexBoss/": "gray",
 "res://Player/": "green",
 "res://UI/": "blue"
 }
@@ -64,10 +70,11 @@ Enemy=""
 Boss=""
 Player=""
 Bullet=""
+Bonus=""
 
 [gui]
 
-theme/custom_font="uid://pd4mlf5kkd2p"
+theme/custom="uid://c0rht2jsnjwuf"
 
 [input]
 
@@ -90,6 +97,14 @@ pointing/emulate_touch_from_mouse=true
 
 locale/translations=PackedStringArray("res://Localization/fa_Translation.en.translation", "res://Localization/fa_Translation.fa.translation")
 locale/locale_filter_mode=0
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Bullets & Bonus"
+2d_physics/layer_4="EnemyProjectile"
+2d_physics/layer_5="Invisible"
 
 [rendering]
 

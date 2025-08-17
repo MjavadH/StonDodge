@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://b4da4dvi6gfcc"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_y2awy"]
+[ext_resource type="Texture2D" uid="uid://d2mh5c34fs3kc" path="res://Bonus/assets/Bonus_Speed.webp" id="2_881js"]
+
+[resource]
+script = ExtResource("1_y2awy")
+bonus_type = &"Speed"
+texture = ExtResource("2_881js")
+collection_anim_name = &"Blue"
+weight = 10
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

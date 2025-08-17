@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://dcvqav1448djf"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=7 format=3 uid="uid://dcvqav1448djf"]
 
-[ext_resource type="Texture2D" uid="uid://csosy1f51cdv8" path="res://Player/Ships/EmeraldWyrm/assets/EmeraldWyrmShipIcon.webp" id="1_mrm1x"]
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_cvs44"]
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_watul"]
+[ext_resource type="Resource" uid="uid://cbhmyfaao4c5u" path="res://Data/Abilities/EmeraldWyrm/EmeraldShell.tres" id="2_cvs44"]
 [ext_resource type="PackedScene" uid="uid://cwgqsh7qi22n5" path="res://Player/Ships/EmeraldWyrm/EmeraldWyrm.tscn" id="2_kma6d"]
+[ext_resource type="Resource" uid="uid://p76g6ph5lams" path="res://Data/Abilities/EmeraldWyrm/GearOverclock.tres" id="3_smjun"]
+[ext_resource type="Texture2D" uid="uid://cfisbrmo44npf" path="res://Player/Ships/EmeraldWyrm/assets/fly.webp" id="4_smjun"]
 
 [resource]
 script = ExtResource("1_watul")
 id = &"EmeraldWyrm"
 ship_name = "Emerald Wyrm"
-icon = ExtResource("1_mrm1x")
+icon = ExtResource("4_smjun")
 cost = 2000
 ship_scene = ExtResource("2_kma6d")
 available_upgrade_ids = Array[StringName]([&"emeraldwyrm_health_upgrade", &"default_firerate_upgrade", &"thunderbolt_speed_upgrade"])
+abilities = Array[ExtResource("1_cvs44")]([ExtResource("2_cvs44"), ExtResource("3_smjun")])
+compatible_bonuses = {}
 metadata/_custom_type_script = "uid://dvkagn0jer5ew"

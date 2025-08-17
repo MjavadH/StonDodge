@@ -9,5 +9,6 @@ texture = ExtResource("2_j32oo")
 health = 2
 score_value = 2
 explosion_anim_name = &"BrownMeteor"
+crack_color = Color(0.23, 0.13, 0.05, 1)
 is_bonus_carrier = false
 metadata/_custom_type_script = "uid://b7igij4bxr8q8"

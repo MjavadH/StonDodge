@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://c0pu5054vtgb2"]
+
+[ext_resource type="Script" uid="uid://csrjiyqm0puvw" path="res://Player/Ships/LunarPhantom/Abilities/RunicBomb/RunicBomb.gd" id="1_vl1a5"]
+[ext_resource type="Texture2D" uid="uid://b4gbysybpg7r1" path="res://Player/Ships/LunarPhantom/Abilities/RunicBomb/assets/RunicBomb.webp" id="2_cf5qe"]
+[ext_resource type="Texture2D" uid="uid://nnndcrnqrg0v" path="res://Player/Ships/LunarPhantom/Abilities/RunicBomb/assets/RunicBomb_explode.png" id="3_0yxwr"]
+[ext_resource type="AudioStream" uid="uid://85sx4ud4s0nf" path="res://Player/Ships/LunarPhantom/Abilities/RunicBomb/assets/RunicBomb_Explosion_Sound.ogg" id="4_vi86a"]
+[ext_resource type="AudioStream" uid="uid://nqx2wnay3fbn" path="res://Player/Ships/LunarPhantom/Abilities/RunicBomb/assets/RunicBomb_Deploy_Sound.ogg" id="5_3a7dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tg35"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi86a"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a7dp"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ctbp"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u7m4"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r1q1"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpk21"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdxff"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxe2s"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgxw1"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73rxh"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or1wg"]
+atlas = ExtResource("3_0yxwr")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cf5qe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tg35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi86a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a7dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ctbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u7m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r1q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpk21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdxff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxe2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgxw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73rxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or1wg")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i7qbg"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl1a5"]
+radius = 200.0
+
+[node name="RunicBomb" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vl1a5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cf5qe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cf5qe")
+animation = &"explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i7qbg")
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_vl1a5")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vi86a")
+bus = &"efx"
+
+[node name="DeploySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3a7dp")
+bus = &"efx"
+
+[connection signal="area_entered" from="." to="." method="_on_enemy_detected"]
+[connection signal="body_entered" from="." to="." method="_on_enemy_detected"]

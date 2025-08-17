@@ -1,67 +1,81 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgvxjymnwpuqu"]
+[gd_scene load_steps=9 format=3 uid="uid://bgvxjymnwpuqu"]
 
 [ext_resource type="Script" uid="uid://buxrvc1tpvp24" path="res://UI/Shop/ShopItem.gd" id="1_170hd"]
-[ext_resource type="Texture2D" uid="uid://8sok5cbs644r" path="res://Player/Ships/Default/assets/DefultShipIcon.webp" id="2_qtpk1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtpk1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtpk1"]
-bg_color = Color(0.75, 0.568125, 0.0225, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.960784, 0.592157, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="Texture2D" uid="uid://toppclssy8cu" path="res://Player/Ships/Default/assets/fly.webp" id="2_3pu18"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vs71p"]
-bg_color = Color(0.92, 0.69, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.960784, 0.592157, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+bg_color = Color(0.137255, 0.145098, 0.172549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.227451, 0.239216, 0.27451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1el5"]
-bg_color = Color(1, 0.8175, 0.27, 1)
+bg_color = Color(0.211765, 0.215686, 0.25098, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.960784, 0.592157, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+border_color = Color(0.290196, 0.298039, 0.333333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfd5p"]
+bg_color = Color(0.121569, 0.12549, 0.145098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.168627, 0.172549, 0.192157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 15.0
+expand_margin_right = 15.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pu18"]
-bg_color = Color(1, 0.756863, 0.027451, 1)
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.960784, 0.592157, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+
+[sub_resource type="Animation" id="Animation_3pu18"]
+resource_name = "failed"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vs71p"]
+_data = {
+&"failed": SubResource("Animation_3pu18")
+}
 
 [node name="ShopItem" type="Panel"]
-custom_minimum_size = Vector2(450, 450)
-offset_left = -225.0
-offset_top = -225.0
-offset_right = 225.0
-offset_bottom = 225.0
+custom_minimum_size = Vector2(400, 400)
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+size_flags_horizontal = 2
 size_flags_stretch_ratio = 9.54
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qtpk1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vs71p")
 script = ExtResource("1_170hd")
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -70,56 +84,60 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -169.0
+offset_top = 25.0
 offset_right = 169.0
-offset_bottom = 338.0
+offset_bottom = 278.0
 grow_horizontal = 2
-texture = ExtResource("2_qtpk1")
+texture = ExtResource("2_3pu18")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_top = 330.0
-offset_right = 125.0
-offset_bottom = 394.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+offset_bottom = -55.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 7
-theme_override_constants/shadow_outline_size = 11
-theme_override_font_sizes/font_size = 50
-text = "name"
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_font_sizes/font_size = 40
+text = "Lunar Phantom"
 horizontal_alignment = 1
 
 [node name="ActionButton" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -120.0
-offset_top = 414.0
+offset_top = -34.0
 offset_right = 120.0
-offset_bottom = 479.0
+offset_bottom = 31.0
 grow_horizontal = 2
+grow_vertical = 0
 focus_mode = 0
-theme_override_colors/font_disabled_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 7
+theme_override_colors/font_disabled_color = Color(0.4, 0.4, 0.419608, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/disabled = SubResource("StyleBoxFlat_qtpk1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vs71p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q1el5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cfd5p")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_q1el5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q1el5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vs71p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1el5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3pu18")
 text = "button"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vs71p")
+}
 
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

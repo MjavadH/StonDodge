@@ -2,11 +2,11 @@ extends CanvasLayer
 
 @export var character_node: CharacterBody2D
 
-@onready var round_score_label: CountingLabel = $VBoxContainer/RoundScoreLabel
-@onready var high_score_label: CountingLabel = $VBoxContainer/HighScoreLabel
-@onready var total_score_label: CountingLabel = $VBoxContainer/TotalScoreLabel
+@onready var round_score_label: CountingLabel = $Panel/VBoxContainer/RoundScoreLabel
+@onready var high_score_label: CountingLabel = $Panel/VBoxContainer/HighScoreLabel
+@onready var total_score_label: CountingLabel = $Panel/VBoxContainer/TotalScoreLabel
 
-func _ready():
+func _ready() -> void:
 	visible = false
 
 func _pauseGame() -> void:
@@ -14,19 +14,22 @@ func _pauseGame() -> void:
 	character_node.set_paused(true)
 	Engine.time_scale = 0.0
 	GameManager.finalize_run()
-	var score = GameManager.get_current_score()
+	var score: int = GameManager.get_current_score()
 	round_score_label.prefix = tr("Round Score") + ": "
 	high_score_label.prefix = tr("High Score") + ": "
 	total_score_label.prefix = tr("Total Score") + ": "
 	round_score_label.set_value_instantly(score)
 	high_score_label.set_value_instantly(GameManager.get_high_score())
 	total_score_label.set_value_instantly(GameManager.get_total_score())
+	AudioServer.set_bus_mute(1, true)
 
 func _on_continue_button_pressed() -> void:
 	Engine.time_scale = 1.0
 	visible = false
+	AudioServer.set_bus_mute(1, false)
 	character_node.set_paused(false)
 
 func _on_back_button_pressed() -> void:
 	Engine.time_scale = 1.0
+	AudioServer.set_bus_mute(1, false)
 	get_tree().change_scene_to_file("res://UI/StartMenu/start.tscn")

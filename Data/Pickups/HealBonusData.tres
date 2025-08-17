@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://def0gagih7cnd"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_0w1jw"]
+[ext_resource type="Texture2D" uid="uid://d1ab08mowpm8n" path="res://Bonus/assets/Bonus_Heal.webp" id="2_fpars"]
+
+[resource]
+script = ExtResource("1_0w1jw")
+bonus_type = &"Heal"
+texture = ExtResource("2_fpars")
+collection_anim_name = &"Red"
+weight = 10
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

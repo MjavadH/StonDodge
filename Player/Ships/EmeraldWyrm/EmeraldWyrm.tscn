@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwgqsh7qi22n5"]
+[gd_scene load_steps=20 format=3 uid="uid://cwgqsh7qi22n5"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_jlpmp"]
 [ext_resource type="Script" uid="uid://cvxmgdmndt4dj" path="res://Player/Ships/EmeraldWyrm/EmeraldWyrm.gd" id="2_2u3fq"]
 [ext_resource type="Texture2D" uid="uid://bpr1uml061n26" path="res://Player/Ships/EmeraldWyrm/assets/damaged.webp" id="2_kcfd8"]
 [ext_resource type="Texture2D" uid="uid://jgys83cxgggf" path="res://Player/Ships/EmeraldWyrm/assets/fly_off.webp" id="3_2u3fq"]
 [ext_resource type="Texture2D" uid="uid://cfisbrmo44npf" path="res://Player/Ships/EmeraldWyrm/assets/fly.webp" id="4_2n8ai"]
+[ext_resource type="AudioStream" uid="uid://cb4b1whbmnhdk" path="res://Player/Ships/EmeraldWyrm/assets/GearOverclock_On.ogg" id="6_2u3fq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8ja2"]
 atlas = ExtResource("2_kcfd8")
@@ -124,3 +125,14 @@ animation = &"up"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="9"]
 build_mode = 1
 polygon = PackedVector2Array(-52, 5, -26, -19, -16, -49, -4, -65, 8, -49, 20, -18, 49, 5, 55, 31, 27, 17, 30, 38, 12, 42, 12, 23, -2, 53, -17, 24, -17, 44, -37, 43, -33, 17, -55, 30)
+
+[node name="GearOverclockTimer" type="Timer" parent="." index="10"]
+wait_time = 10.0
+one_shot = true
+
+[node name="GearOverclockSoundPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("6_2u3fq")
+volume_db = -5.0
+bus = &"efx"
+
+[connection signal="timeout" from="GearOverclockTimer" to="." method="_on_gear_overclock_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://cjk432mrvm8rh"]
+
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_gfkc2"]
+[ext_resource type="Texture2D" uid="uid://cwineelhqlpbt" path="res://Data/Abilities/assets/invisibility.webp" id="1_qjq8t"]
+
+[resource]
+script = ExtResource("1_gfkc2")
+id = &"invisibility"
+display_name = "invisibility"
+icon = ExtResource("1_qjq8t")
+cooldown_duration = 50.0
+metadata/_custom_type_script = "uid://b3bphqh86dvme"

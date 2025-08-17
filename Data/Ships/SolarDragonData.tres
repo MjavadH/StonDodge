@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=5 format=3 uid="uid://damf0dpkc81xi"]
+
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_n42yk"]
+[ext_resource type="Texture2D" uid="uid://cyqkgqtv1t160" path="res://Player/Ships/SolarDragon/assets/fly.webp" id="2_ir71g"]
+[ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="3_aj7dj"]
+[ext_resource type="PackedScene" uid="uid://d025xmr31vha1" path="res://Player/Ships/SolarDragon/SolarDragon.tscn" id="4_w2t7y"]
+
+[resource]
+script = ExtResource("3_aj7dj")
+id = &"SolarDragon"
+ship_name = "Solar Dragon"
+icon = ExtResource("2_ir71g")
+cost = 20000
+ship_scene = ExtResource("4_w2t7y")
+available_upgrade_ids = Array[StringName]([&"solardragon_health_upgrade", &"solardragon_powerorbit_upgrade", &"solardragon_fastcharge_upgrade", &"solardragon_explosivepower_upgrade"])
+abilities = Array[ExtResource("1_n42yk")]([])
+compatible_bonuses = {
+&"2x": 30,
+&"BulletSpeed": 30,
+&"Heal": 10,
+&"Mini-Drone": 10,
+&"Speed": 40
+}
+metadata/_custom_type_script = "uid://dvkagn0jer5ew"

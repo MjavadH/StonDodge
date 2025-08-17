@@ -1,81 +1,288 @@
-[gd_scene load_steps=5 format=3 uid="uid://lexvc7o5hvp1"]
+[gd_scene load_steps=14 format=3 uid="uid://lexvc7o5hvp1"]
 
 [ext_resource type="Script" uid="uid://ciy7tm5ntuy1h" path="res://UI/HUD/InGameHUD.gd" id="1_53dev"]
+[ext_resource type="PackedScene" uid="uid://fklgkdwl11eb" path="res://UI/Components/RollingLabel.tscn" id="2_mj7kv"]
+[ext_resource type="Texture2D" uid="uid://bq2caxpe2amso" path="res://UI/Assets/PauseIcon.svg" id="2_qfwnx"]
 [ext_resource type="Script" uid="uid://ce6ocn8vf4b1w" path="res://UI/Components/CountingLabel.gd" id="3_mj7kv"]
-[ext_resource type="Texture2D" uid="uid://dlw21o2dcgf64" path="res://UI/Assets/icons8_comet_120px.png" id="3_ooic6"]
+[ext_resource type="Texture2D" uid="uid://bo3shd3bneju8" path="res://UI/Assets/Heart.svg" id="3_qfwnx"]
+[ext_resource type="Texture2D" uid="uid://c85wrf71xefs1" path="res://UI/Assets/ScoreIcon.svg" id="5_qfwnx"]
+[ext_resource type="Texture2D" uid="uid://dnfbl0hd5568u" path="res://UI/Assets/PayloadHealthIcon.svg" id="5_t3gjj"]
+[ext_resource type="Texture2D" uid="uid://f5op7nuj53xk" path="res://UI/Assets/BossIcon.svg" id="7_qfwnx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mddcy"]
 content_margin_right = 10.0
-bg_color = Color(1, 0.756863, 0.027451, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.960784, 0.592157, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
+bg_color = Color(0.121569, 0.121569, 0.137255, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.164706, 0.164706, 0.188235, 1)
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
-expand_margin_left = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apdjm"]
+bg_color = Color(0.137255, 0.141176, 0.164706, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.203922, 0.211765, 0.243137, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n30c"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wmrd"]
+bg_color = Color(0.101961, 0.105882, 0.12549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.203922, 0.231373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfwnx"]
+bg_color = Color(1, 0.478431, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.603922, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="InGameHUD" type="CanvasLayer"]
 script = ExtResource("1_53dev")
 
-[node name="HealthBarContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 80)
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
 layout_direction = 2
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 15.0
-offset_top = 25.0
-offset_right = -10.0
-offset_bottom = 105.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mddcy")
 
-[node name="ScoreLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 80)
-layout_direction = 2
-offset_left = 860.0
-offset_top = 20.0
-offset_right = 1060.0
-offset_bottom = 102.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_mddcy")
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("3_mj7kv")
-
-[node name="TextureRect" type="TextureRect" parent="ScoreLabel"]
-layout_mode = 0
-offset_left = -62.0
-offset_top = -23.0
-offset_right = 58.0
-offset_bottom = 97.0
-texture = ExtResource("3_ooic6")
-
-[node name="MultiplierLabel" type="Label" parent="ScoreLabel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 43.0
-offset_top = -63.0
-offset_right = 96.0
-offset_bottom = -18.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.341176, 0.133333, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_constants/paragraph_spacing = 2
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = -1
-theme_override_constants/outline_size = 8
-theme_override_constants/shadow_outline_size = 10
-theme_override_font_sizes/font_size = 35
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+
+[node name="PausePanel" type="Panel" parent="Panel/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_apdjm")
+
+[node name="PauseButton" type="TextureButton" parent="Panel/MarginContainer/HFlowContainer/PausePanel"]
+custom_minimum_size = Vector2(70, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_qfwnx")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="HealthPanel" type="Panel" parent="Panel/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_apdjm")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer/HFlowContainer/HealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthIcon" type="TextureRect" parent="Panel/MarginContainer/HFlowContainer/HealthPanel/HFlowContainer"]
+custom_minimum_size = Vector2(70, 60)
+layout_mode = 2
+texture = ExtResource("3_qfwnx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthLabel" parent="Panel/MarginContainer/HFlowContainer/HealthPanel/HFlowContainer" instance=ExtResource("2_mj7kv")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="PayloadHealthPanel" type="Panel" parent="Panel/MarginContainer/HFlowContainer"]
+visible = false
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_apdjm")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer/HFlowContainer/PayloadHealthPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthIcon" type="TextureRect" parent="Panel/MarginContainer/HFlowContainer/PayloadHealthPanel/HFlowContainer"]
+custom_minimum_size = Vector2(70, 60)
+layout_mode = 2
+texture = ExtResource("5_t3gjj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PayloadHealthLabel" parent="Panel/MarginContainer/HFlowContainer/PayloadHealthPanel/HFlowContainer" instance=ExtResource("2_mj7kv")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="ScorePanel" type="Panel" parent="Panel/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_apdjm")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer/HFlowContainer/ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreIcon" type="TextureRect" parent="Panel/MarginContainer/HFlowContainer/ScorePanel/HFlowContainer"]
+custom_minimum_size = Vector2(70, 60)
+layout_mode = 2
+texture = ExtResource("5_qfwnx")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="ScoreLabel" type="Label" parent="Panel/MarginContainer/HFlowContainer/ScorePanel/HFlowContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_mj7kv")
+
+[node name="MultiplierLabel" type="Label" parent="Panel/MarginContainer/HFlowContainer/ScorePanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -39.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0n30c")
 text = "2x"
+
+[node name="BossPanel" type="Panel" parent="Panel/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_apdjm")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/MarginContainer/HFlowContainer/BossPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -9.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreIcon" type="TextureRect" parent="Panel/MarginContainer/HFlowContainer/BossPanel/HFlowContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("7_qfwnx")
+expand_mode = 1
+
+[node name="BossHealthBar" type="ProgressBar" parent="Panel/MarginContainer/HFlowContainer/BossPanel/HFlowContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_7wmrd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qfwnx")
+value = 50.0
+show_percentage = false
+
+[node name="AbilityButtonContainer" type="VFlowContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_direction = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -620.0
+offset_right = 135.0
+offset_bottom = -73.0
+grow_vertical = 0
+theme_override_constants/v_separation = 40
+alignment = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/HFlowContainer/PausePanel/PauseButton" to="." method="_on_pause_button_pressed"]

@@ -140,6 +140,7 @@ animations = [{
 
 [node name="BaseShip" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
+motion_mode = 1
 script = ExtResource("1_4yu6f")
 
 [node name="ExplosionAnim" type="AnimatedSprite2D" parent="."]
@@ -153,7 +154,7 @@ frame_progress = 1.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_iwchc")
-volume_db = -6.0
+bus = &"efx"
 
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true

@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3bc6nwwx5sv4"]
+
+[ext_resource type="Shader" uid="uid://crljqn8mt1kh1" path="res://UI/Components/grayscale.gdshader" id="1_5lker"]
+[ext_resource type="Script" uid="uid://1eu84a2sigw3" path="res://UI/Components/AbilityButton.gd" id="2_iiuvr"]
+[ext_resource type="Texture2D" uid="uid://cwineelhqlpbt" path="res://Data/Abilities/assets/invisibility.webp" id="3_5lker"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivxi5"]
+bg_color = Color(0.141176, 0.145098, 0.168627, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.227451, 0.235294, 0.266667, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.724643, 0.724643, 0.724642, 0.392157)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5lker"]
+shader = ExtResource("1_5lker")
+shader_parameter/progress = 0.566
+
+[node name="AbilityButton" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(1.99, 1.99)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivxi5")
+script = ExtResource("2_iiuvr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_5lker")
+layout_mode = 2
+texture = ExtResource("3_5lker")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InputCatcher" type="TouchScreenButton" parent="."]
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="InputCatcher" to="." method="_on_input_catcher_pressed"]

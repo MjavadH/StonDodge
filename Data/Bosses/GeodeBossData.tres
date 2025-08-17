@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=4 format=3 uid="uid://0jgcf1hicf4l"]
+
+[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Data/Bosses/BossData.gd" id="1_4liq3"]
+[ext_resource type="PackedScene" uid="uid://c2pvdotumpbmx" path="res://Enemies/Bosses/GeodeBoss/GeodeBoss.tscn" id="1_4vvco"]
+[ext_resource type="PackedScene" uid="uid://bhsbedfhp2t2v" path="res://Enemies/Bosses/GeodeBoss/ArmorShard.tscn" id="2_u2ji2"]
+
+[resource]
+script = ExtResource("1_4liq3")
+id = &"Geode"
+boss_scene = ExtResource("1_4vvco")
+score_on_defeat = 500
+initial_health = 400
+projectile_scene = ExtResource("2_u2ji2")
+metadata/_custom_type_script = "uid://drmmktg16x4rs"

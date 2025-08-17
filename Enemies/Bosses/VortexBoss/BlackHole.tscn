@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://w5osep0jkfw2"]
+
+[ext_resource type="Script" uid="uid://oa0pj4pm6qlc" path="res://Enemies/Bosses/VortexBoss/BlackHole.gd" id="1_r7gek"]
+[ext_resource type="Shader" uid="uid://dwghdraj33xr7" path="res://Enemies/shader/SwirlingVortex.gdshader" id="1_urwes"]
+[ext_resource type="Texture2D" uid="uid://dcsmh7q1yuhlx" path="res://Enemies/Bosses/VortexBoss/assets/Crack.webp" id="2_r7gek"]
+[ext_resource type="Shader" uid="uid://c5xnutdco3shf" path="res://Enemies/shader/SoftGlowCircle.gdshader" id="3_r81kc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qq3wm"]
+shader = ExtResource("1_urwes")
+shader_parameter/portal_texture = ExtResource("2_r7gek")
+shader_parameter/portal_tint = Color(0.0784314, 0.0784314, 0.0784314, 1)
+shader_parameter/vortex_effect_radius = 0.5
+shader_parameter/twist_strength = 3.0
+shader_parameter/pulsation_speed = 0.7
+shader_parameter/breath_magnitude = -1.86265e-08
+shader_parameter/overall_rotation_speed = 1.0
+shader_parameter/texture_scroll_speed_x = -2.2352e-08
+shader_parameter/texture_scroll_speed_y = -2.2352e-08
+shader_parameter/edge_softness = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxhj8"]
+shader = ExtResource("3_r81kc")
+shader_parameter/circle_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+shader_parameter/radius = 0.48
+shader_parameter/edge_softness = 0.15
+shader_parameter/glow_color = Color(0.0784314, 0.0784314, 0.0784314, 0.745098)
+shader_parameter/glow_radius = 0.51
+shader_parameter/glow_edge_softness = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urwes"]
+radius = 58.0345
+
+[node name="BlackHole" type="Area2D"]
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_r7gek")
+
+[node name="BodySprite" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qq3wm")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -130.0
+offset_right = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackHole" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cxhj8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -63.0
+offset_right = 63.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_urwes")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

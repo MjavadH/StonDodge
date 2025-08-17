@@ -1,15 +1,18 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://bdnnnknn7kw8r"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=5 format=3 uid="uid://bdnnnknn7kw8r"]
 
-[ext_resource type="Texture2D" uid="uid://8sok5cbs644r" path="res://Player/Ships/Default/assets/DefultShipIcon.webp" id="1_4837h"]
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_rbcn2"]
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_yipxu"]
 [ext_resource type="PackedScene" uid="uid://12pvslevyquc" path="res://Player/Ships/Default/DefaultShip.tscn" id="2_qfw0r"]
+[ext_resource type="Texture2D" uid="uid://toppclssy8cu" path="res://Player/Ships/Default/assets/fly.webp" id="2_yipxu"]
 
 [resource]
 script = ExtResource("1_rbcn2")
 id = &"default"
 ship_name = "default"
-icon = ExtResource("1_4837h")
+icon = ExtResource("2_yipxu")
 cost = 0
 ship_scene = ExtResource("2_qfw0r")
 available_upgrade_ids = Array[StringName]([&"default_health_upgrade", &"default_firerate_upgrade", &"default_speed_upgrade"])
+abilities = Array[ExtResource("1_yipxu")]([])
+compatible_bonuses = {}
 metadata/_custom_type_script = "uid://dvkagn0jer5ew"

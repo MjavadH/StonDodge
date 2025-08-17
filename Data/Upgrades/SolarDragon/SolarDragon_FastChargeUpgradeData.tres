@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://bjjc3f68vfubi"]
+
+[ext_resource type="Texture2D" uid="uid://blssmqgixwg2u" path="res://Data/Upgrades/assets/icon_energy_capacity.svg" id="1_qvgld"]
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_v4xoh"]
+
+[resource]
+script = ExtResource("2_v4xoh")
+id = &"solardragon_fastcharge_upgrade"
+title = "Fast Charge"
+icon = ExtResource("1_qvgld")
+max_level = 1
+cost_per_level = Array[int]([1000])
+value_per_level = [2.0]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

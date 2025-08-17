@@ -5,6 +5,7 @@ extends Node
 signal total_score_updated(new_total_score: int)
 signal current_score_updated(new_current_score: int)
 signal score_multiplier_changed(new_multiplier: int)
+signal quality_level_changed(new_level: QualityLevel)
 
 ##- Constants -----------------------------------------------------------------##
 const SAVE_FILE_PATH: String = "user://player_data.save"
@@ -16,6 +17,14 @@ const _DEFAULT_SETTINGS: Dictionary = {
 const DEFAULT_SHIP_ID: StringName = &"default"
 
 ##- Game State Variables ------------------------------------------------------##
+# GameMode
+enum GameMode { CLASSIC, SURVIVAL, BOSS_RUSH, BLACKOUT, PAYLOAD_ESCORT }
+var current_game_mode: GameMode = GameMode.CLASSIC
+
+#QualityLevel
+enum QualityLevel { UNSET, LOW, MEDIUM, HIGH }
+var current_quality_level: QualityLevel = QualityLevel.UNSET
+
 # Scores
 var _high_score: int = 0
 var _total_score: int = 0  # This is the persistent currency for upgrades.
@@ -30,6 +39,7 @@ var _owned_ship_ids: Array[StringName] = [DEFAULT_SHIP_ID]
 var _upgrade_levels: Dictionary = {}
 var _current_settings: Dictionary = {}
 
+var t0: int = 0
 ##- Godot Engine Functions ----------------------------------------------------##
 
 func _ready() -> void:
@@ -41,6 +51,22 @@ func _notification(what: int) -> void:
 		save_game()
 
 ##- Public API: Scores & Game Loop --------------------------------------------##
+
+func set_game_mode(mode: GameMode) -> void:
+	current_game_mode = mode
+
+func get_game_mode() -> GameMode:
+	return current_game_mode
+
+func is_quality_level_set() -> bool:
+	return current_quality_level != QualityLevel.UNSET
+
+func set_quality_level(level: QualityLevel) -> void:
+	if current_quality_level == level:
+		return
+	current_quality_level = level
+	_apply_fps_limit()
+	quality_level_changed.emit(current_quality_level)
 
 func get_high_score() -> int:
 	return _high_score
@@ -60,11 +86,14 @@ func add_score_from_boss(value: int) -> void:
 	current_score_updated.emit(_current_game_score)
 
 func set_score_multiplier(multiplier: int) -> void:
-	var new_multiplier = max(1, multiplier)
+	var new_multiplier : int = max(1, multiplier)
 	if _score_multiplier == new_multiplier:
 		return
 	_score_multiplier = new_multiplier
 	score_multiplier_changed.emit(_score_multiplier)
+
+func get_score_multiplier() -> int:
+	return _score_multiplier
 
 # Called at the start of a new game from the main scene.
 func reset_current_score() -> void:
@@ -115,10 +144,10 @@ func purchase_upgrade(ship_id: StringName, upgrade_id: StringName) -> bool:
 	var upgrade_data: UpgradeData = UpgradeRegistry.get_upgrade_data(upgrade_id)
 	if not upgrade_data: return false
 	
-	var current_level = get_upgrade_level(ship_id, upgrade_id)
+	var current_level : int = get_upgrade_level(ship_id, upgrade_id)
 	if current_level >= upgrade_data.max_level: return false
 	
-	var cost = upgrade_data.cost_per_level[current_level]
+	var cost : int = upgrade_data.cost_per_level[current_level]
 	if _total_score >= cost:
 		_total_score -= cost
 		
@@ -131,7 +160,7 @@ func purchase_upgrade(ship_id: StringName, upgrade_id: StringName) -> bool:
 		return true
 	return false
 
-##- Public API: Settings & Saving ---------------------------------------------##
+##- Public API: Settings & Saving & Language ----------------------------------##
 
 func get_settings() -> Dictionary:
 	return _current_settings.duplicate(true)
@@ -144,6 +173,17 @@ func save_game() -> void:
 	_save_data()
 
 ##- Private Save/Load Logic ---------------------------------------------------##
+
+func _apply_fps_limit():
+	match current_quality_level:
+		QualityLevel.LOW:
+			Engine.max_fps = 30
+		QualityLevel.MEDIUM:
+			Engine.max_fps = 60
+		QualityLevel.HIGH:
+			Engine.max_fps = 0
+		_:
+			Engine.max_fps = 0
 
 func _load_data() -> void:
 	_current_settings = _DEFAULT_SETTINGS.duplicate(true)
@@ -166,7 +206,8 @@ func _load_data() -> void:
 	_total_score = loaded_data.get("total_score", 0)
 	_upgrade_levels = loaded_data.get("upgrade_levels", {})
 	_equipped_ship_id = loaded_data.get("equipped_ship_id", DEFAULT_SHIP_ID)
-	
+	current_quality_level = loaded_data.get("quality_level", QualityLevel.UNSET)
+	_apply_fps_limit()
 	var untyped_owned_ids: Array = loaded_data.get("owned_ship_ids", [DEFAULT_SHIP_ID])
 	var typed_owned_ids: Array[StringName] = []
 	for id in untyped_owned_ids:
@@ -184,6 +225,7 @@ func _save_data() -> void:
 		"high_score": _high_score,
 		"total_score": _total_score,
 		"settings": _current_settings,
+		"quality_level": current_quality_level,
 		"upgrade_levels": _upgrade_levels,
 		"owned_ship_ids": _owned_ship_ids,
 		"equipped_ship_id": _equipped_ship_id

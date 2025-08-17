@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bhtk3jioyror7" path="res://Enemies/Bosses/BossDamageArea.gd" id="1_a67l7"]
 
 [node name="BossDamageArea" type="Area2D" groups=["Boss"]]
+collision_layer = 0
 script = ExtResource("1_a67l7")
 
 [node name="DamageTimer" type="Timer" parent="."]

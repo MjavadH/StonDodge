@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbrtayhonlktm"]
+
+[ext_resource type="Script" uid="uid://byanhievklwtk" path="res://Core/BonusRegistry.gd" id="1_wr231"]
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="2_2500e"]
+[ext_resource type="Resource" uid="uid://def0gagih7cnd" path="res://Data/Pickups/HealBonusData.tres" id="3_0acx8"]
+[ext_resource type="Resource" uid="uid://b4da4dvi6gfcc" path="res://Data/Pickups/SpeedBonusData.tres" id="4_ucl13"]
+[ext_resource type="Resource" uid="uid://bnp8wrysoxllv" path="res://Data/Pickups/BulletSpeedBonusData.tres" id="5_wik5w"]
+[ext_resource type="Resource" uid="uid://cmthgg7gbvcmy" path="res://Data/Pickups/2xBonusData.tres" id="6_oejtf"]
+[ext_resource type="Resource" uid="uid://domkqvrw4e2o4" path="res://Data/Pickups/Mini-DroneBonusData.tres" id="7_2500e"]
+
+[node name="BonusRegistry" type="Node"]
+script = ExtResource("1_wr231")
+all_bonuses = Array[ExtResource("2_2500e")]([ExtResource("3_0acx8"), ExtResource("4_ucl13"), ExtResource("5_wik5w"), ExtResource("6_oejtf"), ExtResource("7_2500e")])

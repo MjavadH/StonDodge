@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://domkqvrw4e2o4"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_6hxnw"]
+[ext_resource type="Texture2D" uid="uid://c04lvo204tymc" path="res://World/Mini-Drone/assets/Mini-Drone.webp" id="2_6hxnw"]
+
+[resource]
+script = ExtResource("1_6hxnw")
+bonus_type = &"Mini-Drone"
+texture = ExtResource("2_6hxnw")
+collection_anim_name = &"Blue"
+weight = 5
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

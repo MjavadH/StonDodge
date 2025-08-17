@@ -1,11 +1,12 @@
 extends CanvasLayer
 
 @onready var game_over_label: Label = $GameOverLabel
-@onready var round_score_label: CountingLabel = $VBoxContainer/RoundScoreLabel
-@onready var high_score_label: CountingLabel = $VBoxContainer/HighScoreLabel
-@onready var total_score_label: CountingLabel = $VBoxContainer/TotalScoreLabel
+@onready var round_score_label: CountingLabel = $Panel/VBoxContainer/RoundScoreLabel
+@onready var high_score_label: CountingLabel = $Panel/VBoxContainer/HighScoreLabel
+@onready var total_score_label: CountingLabel = $Panel/VBoxContainer/TotalScoreLabel
 
 func _ready() -> void:
+	MusicPlayer.change_music(MusicPlayer.MusicType.BACKGROUND)
 	GameManager.finalize_run()
 	var score = GameManager.get_current_score()
 	game_over_label.text = tr("Game Over")

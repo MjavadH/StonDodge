@@ -1,12 +1,18 @@
-[gd_scene load_steps=41 format=3 uid="uid://b8xiyuhnkyt7s"]
+[gd_scene load_steps=43 format=3 uid="uid://b8xiyuhnkyt7s"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_wpexs"]
 [ext_resource type="Script" uid="uid://cnjxi13y6glus" path="res://Player/Ships/LunarPhantom/LunarPhantom.gd" id="2_7ldk0"]
 [ext_resource type="Texture2D" uid="uid://be37ohhjsuxdj" path="res://Player/Ships/LunarPhantom/assets/damaged.webp" id="3_x7v8c"]
 [ext_resource type="Texture2D" uid="uid://byyfba35tmpn6" path="res://Player/Ships/LunarPhantom/assets/fly_off.webp" id="4_yh285"]
 [ext_resource type="Texture2D" uid="uid://bsgsr1hoh1qsu" path="res://Player/Ships/LunarPhantom/assets/fly.webp" id="5_u0toh"]
-[ext_resource type="AudioStream" uid="uid://55lj2fls0oxl" path="res://Player/Weapons/Projectiles/assets/LunarPhantom_FirstShoot.ogg" id="7_u0toh"]
-[ext_resource type="AudioStream" uid="uid://kfjnkicghqpf" path="res://Player/Weapons/Projectiles/assets/LunarPhantom_ContinuousShoot.ogg" id="8_l1fx6"]
+[ext_resource type="AudioStream" uid="uid://cjpcay3857v0c" path="res://Player/Ships/LunarPhantom/assets/LunarPhantom_StopFire.ogg" id="7_l1fx6"]
+[ext_resource type="AudioStream" uid="uid://55lj2fls0oxl" path="res://Player/Ships/LunarPhantom/assets/LunarPhantom_FirstShoot.ogg" id="7_u0toh"]
+[ext_resource type="AudioStream" uid="uid://bsyy8026s4jge" path="res://Player/Ships/LunarPhantom/assets/invisibility.ogg" id="8_f76do"]
+[ext_resource type="AudioStream" uid="uid://kfjnkicghqpf" path="res://Player/Ships/LunarPhantom/assets/LunarPhantom_ContinuousShoot.ogg" id="8_l1fx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwe2l"]
+atlas = ExtResource("3_x7v8c")
+region = Rect2(324, 0, 108, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fx6"]
 atlas = ExtResource("3_x7v8c")
@@ -19,10 +25,6 @@ region = Rect2(108, 0, 108, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8chnc"]
 atlas = ExtResource("3_x7v8c")
 region = Rect2(216, 0, 108, 120)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwe2l"]
-atlas = ExtResource("3_x7v8c")
-region = Rect2(324, 0, 108, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbiq4"]
 atlas = ExtResource("3_x7v8c")
@@ -140,6 +142,14 @@ region = Rect2(432, 120, 108, 120)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lwe2l")
+}],
+"loop": true,
+"name": &"cooldown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l1fx6")
 }, {
 "duration": 1.0,
@@ -252,7 +262,9 @@ animations = [{
 
 [node name="LunarPhantom" instance=ExtResource("1_wpexs")]
 script = ExtResource("2_7ldk0")
-charge_time = 1.2
+charge_time = 2.5
+fire_duration = 15.0
+cooldown_duration = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_a6s15")
@@ -265,14 +277,33 @@ polygon = PackedVector2Array(-51, 2, -21, -20, -16, -43, 0, -60, 17, -41, 22, -2
 [node name="ChargeTimer" type="Timer" parent="." index="10"]
 wait_time = 5.0
 
-[node name="ChargeSoundPlayer" type="AudioStreamPlayer" parent="." index="11"]
-stream = ExtResource("7_u0toh")
-volume_db = -5.0
+[node name="FireTimer" type="Timer" parent="." index="11"]
 
-[node name="ContinuousShootSoundPlayer" type="AudioStreamPlayer" parent="." index="12"]
+[node name="ChargeSoundPlayer" type="AudioStreamPlayer" parent="." index="12"]
+stream = ExtResource("7_u0toh")
+bus = &"efx"
+
+[node name="StopFireSoundPlayer" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource("7_l1fx6")
+bus = &"efx"
+
+[node name="InvisibilitySoundPlayer" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("8_f76do")
+bus = &"efx"
+
+[node name="ContinuousShootSoundPlayer" type="AudioStreamPlayer" parent="." index="15"]
 stream = ExtResource("8_l1fx6")
-volume_db = -5.0
+bus = &"efx"
 parameters/looping = true
 
+[node name="InvisibilityTimer" type="Timer" parent="." index="16"]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="finished" from="ChargeSoundPlayer" to="." method="_on_first_shoot_sound_player_finished"]
+[connection signal="finished" from="StopFireSoundPlayer" to="." method="_on_first_shoot_sound_player_finished"]
+[connection signal="finished" from="InvisibilitySoundPlayer" to="." method="_on_first_shoot_sound_player_finished"]
+[connection signal="timeout" from="InvisibilityTimer" to="." method="_on_invisibility_timer_timeout"]

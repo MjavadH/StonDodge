@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://c06pcay13c6hp"]
+
+[ext_resource type="Script" uid="uid://h6mwv4744j7q" path="res://World/Components/Background.gd" id="1_78k28"]
+[ext_resource type="Shader" uid="uid://drcqqishffaf4" path="res://World/Assets/main.gdshader" id="2_tjk6d"]
+[ext_resource type="Shader" uid="uid://durd6w8m1cd7v" path="res://UI/Components/StarsShaders.gdshader" id="3_yhu5m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo2hw"]
+shader = ExtResource("2_tjk6d")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.2
+shader_parameter/density = 145.0
+shader_parameter/compression = 0.5
+shader_parameter/trail_size = 100.0
+shader_parameter/brightness = 0.7
+shader_parameter/high_quality = true
+
+[sub_resource type="Gradient" id="Gradient_hdyf8"]
+colors = PackedColorArray(0.835294, 0, 0, 1, 0.090364, 0.56486, 0.513677, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_td74h"]
+gradient = SubResource("Gradient_hdyf8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic66k"]
+shader = ExtResource("3_yhu5m")
+shader_parameter/gradientB = SubResource("GradientTexture2D_td74h")
+shader_parameter/frequencyBgStar = 0.996
+shader_parameter/shineFrequencyBgStar = 1.0
+shader_parameter/transparencyBgStar = 0.4
+shader_parameter/colorBackground = Color(0.05, 0.04, 0.2, 1)
+shader_parameter/transparencyBackground = 1.0
+shader_parameter/seed = 0.0
+
+[node name="Background" type="CanvasLayer"]
+layer = -2
+script = ExtResource("1_78k28")
+
+[node name="SimpleBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Drop" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jo2hw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Stars" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ic66k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

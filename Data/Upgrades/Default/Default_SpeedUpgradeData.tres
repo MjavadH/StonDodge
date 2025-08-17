@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://bxydd7b3x3o7u"]
 
-[ext_resource type="Texture2D" uid="uid://dtq3xqbk20dsw" path="res://Data/Upgrades/assets/icon_speed.webp" id="1_oiln2"]
+[ext_resource type="Texture2D" uid="uid://btb72sflvy2gf" path="res://Data/Upgrades/assets/icon_speed.svg" id="1_oiln2"]
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_bextx"]
 
 [resource]
 script = ExtResource("2_bextx")
 id = &"default_speed_upgrade"
+title = "More Speed"
 icon = ExtResource("1_oiln2")
 max_level = 2
 cost_per_level = Array[int]([500, 500])
-value_per_level = [300.0, 400.0]
+value_per_level = [600.0, 700.0]
 metadata/_custom_type_script = "uid://cef7lk3f7n72o"

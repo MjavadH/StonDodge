@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://cwmnximtkdn8g"]
 
-[ext_resource type="Texture2D" uid="uid://cabs2gn5uwygp" path="res://Data/Upgrades/assets/icon_heart.webp" id="1_noiyw"]
+[ext_resource type="Texture2D" uid="uid://dl4ysto34ynyp" path="res://Data/Upgrades/assets/icon_heart.svg" id="1_2gkhx"]
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_ht2jo"]
 
 [resource]
 script = ExtResource("2_ht2jo")
 id = &"thunderbolt_health_upgrade"
-icon = ExtResource("1_noiyw")
+title = "More Health"
+icon = ExtResource("1_2gkhx")
 max_level = 2
 cost_per_level = Array[int]([1000, 1000])
 value_per_level = [6, 7]

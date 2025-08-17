@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://cfkgckl6sdfe8"]
+
+[ext_resource type="Texture2D" uid="uid://blssmqgixwg2u" path="res://Data/Upgrades/assets/icon_energy_capacity.svg" id="1_hjhbn"]
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_wyn17"]
+
+[resource]
+script = ExtResource("2_wyn17")
+id = &"lunarphantom_firing_duration_upgrade"
+title = "Firing Duration"
+icon = ExtResource("1_hjhbn")
+max_level = 4
+cost_per_level = Array[int]([1000, 1000, 1000, 1000])
+value_per_level = [30.0, 40.0, 50.0, 60.0]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

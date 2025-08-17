@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://x2iguwd26j3i"]
+
+[ext_resource type="Texture2D" uid="uid://c5qs88xtmyrxq" path="res://Data/Abilities/assets/RunicExplosion.webp" id="1_pqggf"]
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_ut0wy"]
+
+[resource]
+script = ExtResource("1_ut0wy")
+id = &"RunicExplosion"
+display_name = "Runic Explosion"
+icon = ExtResource("1_pqggf")
+cooldown_duration = 15.0
+metadata/_custom_type_script = "uid://b3bphqh86dvme"

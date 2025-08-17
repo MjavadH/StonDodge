@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://bnp8wrysoxllv"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_8rou3"]
+[ext_resource type="Texture2D" uid="uid://8r5vi7mdb1fe" path="res://Bonus/assets/Bonus_BulletSpeed.webp" id="2_tv68a"]
+
+[resource]
+script = ExtResource("1_8rou3")
+bonus_type = &"BulletSpeed"
+texture = ExtResource("2_tv68a")
+collection_anim_name = &"Orange"
+weight = 10
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

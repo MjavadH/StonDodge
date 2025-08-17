@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dtb05okqadvts"]
 
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_cmugg"]
-[ext_resource type="Texture2D" uid="uid://c0yxq837ugcy" path="res://Data/Upgrades/assets/icon_bullet_length.webp" id="1_idlso"]
+[ext_resource type="Texture2D" uid="uid://22bcakoaumkj" path="res://Data/Upgrades/assets/icon_increased_range.svg" id="1_idlso"]
 
 [resource]
 script = ExtResource("1_cmugg")
 id = &"thunderbolt_bullet_length_upgrade"
+title = "Increased Range"
 icon = ExtResource("1_idlso")
 max_level = 2
 cost_per_level = Array[int]([1000, 1000])

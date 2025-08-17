@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=4 format=3 uid="uid://bl8ulkn1w4h42"]
+
+[ext_resource type="PackedScene" uid="uid://cx5i4c878yc5l" path="res://Enemies/Bosses/VortexBoss/VortexBoss.tscn" id="1_t5y4x"]
+[ext_resource type="PackedScene" uid="uid://w5osep0jkfw2" path="res://Enemies/Bosses/VortexBoss/BlackHole.tscn" id="2_v72av"]
+[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Data/Bosses/BossData.gd" id="3_ne0ca"]
+
+[resource]
+script = ExtResource("3_ne0ca")
+id = &"Vortex"
+boss_scene = ExtResource("1_t5y4x")
+score_on_defeat = 400
+initial_health = 300
+projectile_scene = ExtResource("2_v72av")
+metadata/_custom_type_script = "uid://drmmktg16x4rs"

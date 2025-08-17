@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://cmthgg7gbvcmy"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_u1u1s"]
+[ext_resource type="Texture2D" uid="uid://rg0hngnugn7c" path="res://Bonus/assets/Bonus_2x.webp" id="2_cjlni"]
+
+[resource]
+script = ExtResource("1_u1u1s")
+bonus_type = &"2x"
+texture = ExtResource("2_cjlni")
+collection_anim_name = &"Orange"
+weight = 10
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

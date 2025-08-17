@@ -8,6 +8,7 @@ extends Resource
 
 ##- Display & Shop Information ------------------------------------------------##
 @export_group("Display & Shop")
+@export var title: String
 @export var icon: Texture2D
 
 ##- Gameplay Data -------------------------------------------------------------##

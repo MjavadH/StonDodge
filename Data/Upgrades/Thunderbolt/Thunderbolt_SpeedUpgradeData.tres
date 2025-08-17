@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dr5wqkieh3bw3"]
 
-[ext_resource type="Texture2D" uid="uid://dtq3xqbk20dsw" path="res://Data/Upgrades/assets/icon_speed.webp" id="1_iuvjq"]
+[ext_resource type="Texture2D" uid="uid://btb72sflvy2gf" path="res://Data/Upgrades/assets/icon_speed.svg" id="1_1muqi"]
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_s2a8q"]
 
 [resource]
 script = ExtResource("2_s2a8q")
 id = &"thunderbolt_speed_upgrade"
-icon = ExtResource("1_iuvjq")
+title = "More Speed"
+icon = ExtResource("1_1muqi")
 max_level = 2
 cost_per_level = Array[int]([500, 500])
-value_per_level = [400.0, 500.0]
+value_per_level = [800.0, 900.0]
 metadata/_custom_type_script = "uid://cef7lk3f7n72o"

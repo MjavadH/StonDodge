@@ -6,6 +6,7 @@ var original_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	original_offset = offset
+	set_process(false)
 
 func _process(delta: float) -> void:
 	if shake_amount > 0:
@@ -17,5 +18,6 @@ func _process(delta: float) -> void:
 	else:
 		offset = original_offset
 
-func start_shake(amount: float = 10.0):
+func start_shake(amount: float = 10.0) -> void:
 	shake_amount = amount
+	set_process(true)

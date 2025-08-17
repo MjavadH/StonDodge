@@ -5,6 +5,7 @@ extends Node
 # Emitted when a boss is successfully defeated. The main game can listen to this
 # to grant rewards, change music, resume normal spawns, etc.
 signal boss_defeated(boss_id: StringName, score_value: int)
+signal boss_spawned(boss_node: Node)
 
 ##- Export Variables ----------------------------------------------------------##
 # This array holds all the boss. You create BossData resources
@@ -51,7 +52,7 @@ func trigger_encounter(boss_id: StringName, dependencies: Dictionary) -> bool:
 
 	# Connect to the boss's 'defeated' signal to know when the fight is over.
 	_current_boss_instance.boss_defeated.connect(
-		func(): _on_boss_defeated(boss_data)
+		func() -> void: _on_boss_defeated(boss_data)
 	)
 	
 	# Add the boss to the scene tree and start its logic.
@@ -64,10 +65,10 @@ func trigger_encounter(boss_id: StringName, dependencies: Dictionary) -> bool:
 		
 	if _current_boss_instance.has_method("start"):
 		_current_boss_instance.start()
-		
+	boss_spawned.emit(_current_boss_instance)
 	return true
 
 ##- Signal Handlers -----------------------------------------------------------##
 func _on_boss_defeated(boss_data: BossData) -> void:
-	boss_defeated.emit(boss_data.id, boss_data.score_on_defeat)
 	_current_boss_instance = null # Allow a new boss to be spawned.
+	boss_defeated.emit(boss_data.id, boss_data.score_on_defeat)

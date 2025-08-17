@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://p76g6ph5lams"]
+
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_4ar03"]
+[ext_resource type="Texture2D" uid="uid://cwdb61w7lsfgw" path="res://Data/Abilities/assets/GearOverclock.webp" id="1_hfury"]
+
+[resource]
+script = ExtResource("1_4ar03")
+id = &"GearOverclock"
+display_name = "Gear Overclock"
+icon = ExtResource("1_hfury")
+cooldown_duration = 30.0
+metadata/_custom_type_script = "uid://b3bphqh86dvme"

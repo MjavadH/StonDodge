@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=3 format=3 uid="uid://cvhaq64on7wq1"]
+
+[ext_resource type="PackedScene" uid="uid://m0wrgvng8qy2" path="res://Enemies/Bosses/CrimsonLordBoss/CrimsonLordBoss.tscn" id="1_2dk2a"]
+[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Data/Bosses/BossData.gd" id="2_6u4md"]
+
+[resource]
+script = ExtResource("2_6u4md")
+id = &"CrimsonLord"
+boss_scene = ExtResource("1_2dk2a")
+score_on_defeat = 150
+initial_health = 100
+metadata/_custom_type_script = "uid://drmmktg16x4rs"

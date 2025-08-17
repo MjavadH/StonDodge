@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx01yci07rsln"]
+
+[ext_resource type="Shader" uid="uid://dc01sok0r8mo2" path="res://World/Assets/blackout_shader.gdshader" id="1_pd5g8"]
+[ext_resource type="Script" uid="uid://qjkbj7dk4v0w" path="res://World/Components/BlackoutOverlay.gd" id="2_yooni"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_deev3"]
+shader = ExtResource("1_pd5g8")
+shader_parameter/light_origins = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/light_radii = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/active_light_count = 0
+shader_parameter/feather = 0.2
+
+[node name="BlackoutOverlay" type="ColorRect"]
+material = SubResource("ShaderMaterial_deev3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yooni")

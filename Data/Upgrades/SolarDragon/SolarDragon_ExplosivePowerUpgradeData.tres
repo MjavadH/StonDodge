@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://d1pxj3bm01c4c"]
+
+[ext_resource type="Texture2D" uid="uid://cvpid58f5dmun" path="res://Data/Upgrades/assets/ExplosivePower.svg" id="1_5mle4"]
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_xv6cv"]
+
+[resource]
+script = ExtResource("1_xv6cv")
+id = &"solardragon_explosivepower_upgrade"
+title = "Explosive Power"
+icon = ExtResource("1_5mle4")
+max_level = 1
+cost_per_level = Array[int]([1000])
+value_per_level = [2]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

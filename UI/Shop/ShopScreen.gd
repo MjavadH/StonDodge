@@ -1,19 +1,19 @@
 class_name ShopScreen
 extends CanvasLayer
 
-const SHOP_ITEM_SCENE = preload("res://UI/Shop/ShopItem.tscn")
-const UPGRADE_ITEM_SCENE = preload("res://UI/Shop/UpgradeItem.tscn")
-const HEALTHY_ICON: Texture2D = preload("res://UI/Assets/Healthy.webp")
+const SHOP_ITEM_SCENE : PackedScene = preload("res://UI/Shop/ShopItem.tscn")
+const UPGRADE_ITEM_SCENE: PackedScene = preload("res://UI/Shop/UpgradeItem.tscn")
 
 ##- Node References -----------------------------------------------------------##
-@onready var score_label: CountingLabel = $ScoreLabel
 @onready var bullets_container: Node = $BulletsContainer
 @onready var marker_2d: Marker2D = $Panel/Marker2D
 @onready var shoot_timer: Timer = $ShootTimer
-@onready var shop_item_container: HFlowContainer = $ScrollContainer/ShopItemContainer
-@onready var health_bar_container: HBoxContainer = $HealthBarContainer
-@onready var upgrade_item_container: HFlowContainer = $UpgradeItemContainer
+@onready var shop_item_container: FlowContainer = $ScrollContainer/MarginContainer/ScrollContainer/ShopItemContainer
+@onready var upgrade_item_container: VFlowContainer = $UpgradeItemContainer
 @onready var ship_container: Node = $ShipContainer
+@onready var score_label: CountingLabel = $Status/MarginContainer/HFlowContainer/ScorePanel/HFlowContainer/ScoreLabel
+@onready var health_label: RollingLabel = $Status/MarginContainer/HFlowContainer/HealthPanel/HFlowContainer/HealthLabel
+
 
 ##- Private Variables ---------------------------------------------------------##
 var _player_instance: BaseShip 
@@ -28,7 +28,7 @@ func _ready() -> void:
 
 ##- Private Functions ---------------------------------------------------------##
 
-func _populate_shop_ships():
+func _populate_shop_ships() -> void:
 	for child in shop_item_container.get_children():
 		child.queue_free()
 	
@@ -41,7 +41,7 @@ func _populate_shop_ships():
 		# When any item is bought or equipped, refresh the whole shop.
 		item_instance.action_taken.connect(_update_displays)
 
-func _update_displays():
+func _update_displays() -> void:
 	_on_total_score_updated(GameManager.get_total_score())
 	_populate_shop_ships()
 	_clear_container(bullets_container)
@@ -53,7 +53,7 @@ func _clear_container(node: Node) -> void:
 	for child in node.get_children():
 		child.queue_free()
 
-func _show_ship_upgrades():
+func _show_ship_upgrades() -> void:
 	for child in upgrade_item_container.get_children():
 		child.queue_free()
 	
@@ -70,22 +70,13 @@ func _show_ship_upgrades():
 		item_instance.configure(equipped_ship_id, upgrade_data)
 		item_instance.upgrade_purchased.connect(_update_displays)
 
-func _setup_health_bar(max_health: int) -> void:
-	for child in health_bar_container.get_children():
-		child.queue_free()
-	
-	for i in range(max_health):
-		var icon := TextureRect.new()
-		icon.texture = HEALTHY_ICON
-		health_bar_container.add_child(icon)
-
 func _spawn_player_ship() -> void:
 	var ship_id = GameManager.get_equipped_ship_id()
 	var ship_data: ShipData = EquipmentRegistry.get_ship_data(ship_id)
 	if not ship_data: return
 	
 	_player_instance = ship_data.ship_scene.instantiate()
-	var dependencies = {
+	var dependencies: Dictionary = {
 		"bullet_container": bullets_container,
 		"ship_id": ship_id
 	}
@@ -94,11 +85,11 @@ func _spawn_player_ship() -> void:
 	_player_instance.position = marker_2d.global_position
 	_player_instance.initialize(dependencies)
 	_player_instance.set_paused(true)
-	_setup_health_bar(_player_instance.max_health)
+	health_label.roll_to(_player_instance.max_health)
 	shoot_timer.wait_time = _player_instance._base_shoot_cooldown
 	shoot_timer.start()
 
-func _on_total_score_updated(new_total: int):
+func _on_total_score_updated(new_total: int) -> void:
 	score_label.count_to(new_total)
 
 func _on_shoot_timer_timeout() -> void:
@@ -106,3 +97,8 @@ func _on_shoot_timer_timeout() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/StartMenu/start.tscn")
+
+func _on_button_pressed() -> void:
+	GameManager.add_score_from_enemy(2000)
+	GameManager.finalize_run()
+	_update_displays()

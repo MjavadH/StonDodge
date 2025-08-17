@@ -1,15 +1,29 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=4 format=3 uid="uid://c521p21pbayiv"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=8 format=3 uid="uid://c521p21pbayiv"]
 
-[ext_resource type="Texture2D" uid="uid://co3rs80i65xjj" path="res://Player/Ships/LunarPhantom/assets/LunarPhantomShipIcon.webp" id="1_id66m"]
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_t23h8"]
+[ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_yuycj"]
+[ext_resource type="Resource" uid="uid://x2iguwd26j3i" path="res://Data/Abilities/LunarPhantom/RunicExplosion.tres" id="2_4dvts"]
+[ext_resource type="Resource" uid="uid://cjk432mrvm8rh" path="res://Data/Abilities/LunarPhantom/invisibility.tres" id="3_uwlqr"]
 [ext_resource type="PackedScene" uid="uid://b8xiyuhnkyt7s" path="res://Player/Ships/LunarPhantom/LunarPhantom.tscn" id="3_xcu5u"]
+[ext_resource type="Texture2D" uid="uid://bsgsr1hoh1qsu" path="res://Player/Ships/LunarPhantom/assets/fly.webp" id="4_yuycj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dvts"]
+atlas = ExtResource("4_yuycj")
+region = Rect2(0, 0, 108.12, 120.004)
 
 [resource]
 script = ExtResource("1_t23h8")
 id = &"LunarPhantom"
 ship_name = "LunarPhantom"
-icon = ExtResource("1_id66m")
-cost = 20000
+icon = SubResource("AtlasTexture_4dvts")
+cost = 10000
 ship_scene = ExtResource("3_xcu5u")
-available_upgrade_ids = Array[StringName]([])
+available_upgrade_ids = Array[StringName]([&"lunarphantom_speed_upgrade", &"lunarphantom_firing_duration_upgrade"])
+abilities = Array[ExtResource("1_yuycj")]([ExtResource("2_4dvts"), ExtResource("3_uwlqr")])
+compatible_bonuses = {
+&"2x": 50,
+&"Heal": 10,
+&"Mini-Drone": 10,
+&"Speed": 30
+}
 metadata/_custom_type_script = "uid://dvkagn0jer5ew"

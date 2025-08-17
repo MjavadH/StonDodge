@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BossData" load_steps=4 format=3 uid="uid://ba8fjapqenm8o"]
+
+[ext_resource type="PackedScene" uid="uid://bjjsnynnqx6xw" path="res://Enemies/Bosses/PrismBoss/PrismBoss.tscn" id="1_d4hpy"]
+[ext_resource type="PackedScene" uid="uid://b3mew4dsvxeib" path="res://Enemies/Bosses/PrismBoss/boss3bullet.tscn" id="2_y13y5"]
+[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Data/Bosses/BossData.gd" id="3_d4hpy"]
+
+[resource]
+script = ExtResource("3_d4hpy")
+id = &"Prism"
+boss_scene = ExtResource("1_d4hpy")
+score_on_defeat = 400
+initial_health = 400
+projectile_scene = ExtResource("2_y13y5")
+metadata/_custom_type_script = "uid://drmmktg16x4rs"

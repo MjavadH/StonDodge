@@ -3,7 +3,6 @@ extends Node
 @export var available_ships: Array[ShipData]
 
 var _ship_map: Dictionary = {}
-
 func _ready() -> void:
 	for ship_data in available_ships:
 		if ship_data and ship_data.id != &"":

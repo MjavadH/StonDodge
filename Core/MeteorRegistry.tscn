@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2tx0fud0kxsi"]
+[gd_scene load_steps=18 format=3 uid="uid://c2tx0fud0kxsi"]
 
 [ext_resource type="Script" uid="uid://d2ttbe4fgyees" path="res://Core/MeteorRegistry.gd" id="1_ekr0t"]
 [ext_resource type="Script" uid="uid://b7igij4bxr8q8" path="res://Data/Enemies/MeteorData.gd" id="2_yvitm"]
@@ -10,14 +10,16 @@
 [ext_resource type="Resource" uid="uid://bn5mtybknnex6" path="res://Data/Enemies/Meteor6Data.tres" id="8_cwrji"]
 [ext_resource type="Resource" uid="uid://bl80maeexmup" path="res://Data/Enemies/Meteor7Data.tres" id="9_xfrxr"]
 [ext_resource type="Resource" uid="uid://lwsd8hviylku" path="res://Data/Enemies/Meteor8Data.tres" id="10_ycm35"]
+[ext_resource type="Resource" uid="uid://c2iqunt88vil5" path="res://Data/Enemies/Meteor10Data.tres" id="11_77wan"]
 [ext_resource type="Resource" uid="uid://c6lhi5stfmiju" path="res://Data/Enemies/Meteor9Data.tres" id="11_rf0im"]
 [ext_resource type="Resource" uid="uid://c3paq40xhe4r6" path="res://Data/Enemies/BonusMeteor1Data.tres" id="12_ev15k"]
 [ext_resource type="Resource" uid="uid://c7nihs3oywsdt" path="res://Data/Enemies/BonusMeteor2Data.tres" id="13_35fe5"]
 [ext_resource type="Resource" uid="uid://cyg50jksqe2dk" path="res://Data/Enemies/BonusMeteor3Data.tres" id="14_0jrcu"]
 [ext_resource type="Resource" uid="uid://dg1wkruyq3lft" path="res://Data/Enemies/BonusMeteor4Data.tres" id="15_c28xb"]
+[ext_resource type="Resource" uid="uid://d2r4e43vg8dwi" path="res://Data/Enemies/BonusMeteor5Data.tres" id="17_ng1r4"]
 
 [node name="MeteorRegistry" type="Node"]
 script = ExtResource("1_ekr0t")
-regular_meteor_types = Array[ExtResource("2_yvitm")]([ExtResource("3_67586"), ExtResource("4_77wan"), ExtResource("5_ng1r4"), ExtResource("6_f4r65"), ExtResource("7_acyt4"), ExtResource("8_cwrji"), ExtResource("9_xfrxr"), ExtResource("10_ycm35")])
+regular_meteor_types = Array[ExtResource("2_yvitm")]([ExtResource("3_67586"), ExtResource("4_77wan"), ExtResource("5_ng1r4"), ExtResource("6_f4r65"), ExtResource("7_acyt4"), ExtResource("8_cwrji"), ExtResource("9_xfrxr"), ExtResource("10_ycm35"), ExtResource("11_77wan")])
 special_meteor_types = Array[ExtResource("2_yvitm")]([ExtResource("11_rf0im")])
-bonus_meteor_types = Array[ExtResource("2_yvitm")]([ExtResource("12_ev15k"), ExtResource("13_35fe5"), ExtResource("14_0jrcu"), ExtResource("15_c28xb")])
+bonus_meteor_types = Array[ExtResource("2_yvitm")]([ExtResource("12_ev15k"), ExtResource("13_35fe5"), ExtResource("14_0jrcu"), ExtResource("15_c28xb"), ExtResource("17_ng1r4")])

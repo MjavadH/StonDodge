@@ -1,92 +1,130 @@
-[gd_scene load_steps=7 format=3 uid="uid://ib7lvie7a70b"]
+[gd_scene load_steps=9 format=3 uid="uid://ib7lvie7a70b"]
 
 [ext_resource type="Script" uid="uid://cimomrli8ws7e" path="res://UI/GameOver/GameOverScreen.gd" id="1_lhre1"]
-[ext_resource type="Shader" uid="uid://drcqqishffaf4" path="res://World/Assets/main.gdshader" id="2_urmxa"]
-[ext_resource type="Texture2D" uid="uid://crvd6jl7ykeyr" path="res://UI/Assets/button.webp" id="3_ctyv0"]
+[ext_resource type="PackedScene" uid="uid://c06pcay13c6hp" path="res://World/Components/background.tscn" id="2_bgchc"]
 [ext_resource type="Script" uid="uid://ce6ocn8vf4b1w" path="res://UI/Components/CountingLabel.gd" id="4_bwvvp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsfmr"]
-shader = ExtResource("2_urmxa")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/background_color = Color(0, 0, 0, 1)
-shader_parameter/speed = 0.2
-shader_parameter/density = 145.0
-shader_parameter/compression = 0.5
-shader_parameter/trail_size = 100.0
-shader_parameter/brightness = 0.8
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgchc"]
+bg_color = Color(0.207843, 0.211765, 0.239216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
-[sub_resource type="Theme" id="Theme_mgbnj"]
-Label/colors/font_color = Color(1, 0.960784, 0.592157, 1)
-Label/colors/font_outline_color = Color(1, 0.15, 0.164166, 1)
-Label/constants/line_spacing = 0
-Label/constants/outline_size = 20
-Label/constants/paragraph_spacing = -50
-Label/font_sizes/font_size = 200
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n48wm"]
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cs4e"]
+bg_color = Color(0.207843, 0.211765, 0.239216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftwpr"]
+bg_color = Color(0.172549, 0.176471, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.227451, 0.231373, 0.258824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s25mj"]
+bg_color = Color(0.133333, 0.137255, 0.164706, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.184314, 0.188235, 0.219608, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_lhre1")
 
-[node name="background" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_lsfmr")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="Background" parent="." instance=ExtResource("2_bgchc")]
 
 [node name="Restart_Button" type="Button" parent="."]
 layout_direction = 2
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = -520.0
-offset_right = -562.0
-offset_bottom = -245.0
+offset_left = -469.0
+offset_top = -420.0
+offset_right = -25.0
+offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 84
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_bgchc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bgchc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bgchc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bgchc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n48wm")
 text = "Again"
-icon = ExtResource("3_ctyv0")
-flat = true
+autowrap_mode = 1
 icon_alignment = 1
 
 [node name="Back_Button" type="Button" parent="."]
 layout_direction = 2
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 580.0
-offset_top = -520.0
-offset_right = -62.0
-offset_bottom = -245.0
+offset_left = 28.0
+offset_top = -420.0
+offset_right = 472.0
+offset_bottom = -170.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 4
 focus_mode = 0
-theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_hover_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_outline_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_focus_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_colors/font_pressed_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 84
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.878431, 0.878431, 0.878431, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_6cs4e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6cs4e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6cs4e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6cs4e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ftwpr")
 text = "Back"
-icon = ExtResource("3_ctyv0")
-flat = true
 icon_alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="."]
@@ -94,28 +132,41 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 624.0
 grow_horizontal = 2
-theme = SubResource("Theme_mgbnj")
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 200
 text = "GAME
 OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = -1
-anchor_top = 0.382
-anchor_right = 1.0
-anchor_bottom = 0.644
-offset_top = -0.440063
-offset_bottom = 0.519897
+[node name="Panel" type="Panel" parent="."]
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -469.0
+offset_top = -311.0
+offset_right = 469.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s25mj")
 
-[node name="RoundScoreLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RoundScoreLabel" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 15
-theme_override_constants/shadow_outline_size = 30
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
 theme_override_font_sizes/font_size = 68
 text = "Round Score: 0"
 horizontal_alignment = 1
@@ -124,14 +175,10 @@ autowrap_mode = 3
 script = ExtResource("4_bwvvp")
 prefix = "Round Score: "
 
-[node name="HighScoreLabel" type="Label" parent="VBoxContainer"]
+[node name="HighScoreLabel" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 15
-theme_override_constants/shadow_outline_size = 30
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
 theme_override_font_sizes/font_size = 68
 text = "High Score: 0"
 horizontal_alignment = 1
@@ -140,14 +187,10 @@ autowrap_mode = 3
 script = ExtResource("4_bwvvp")
 prefix = "High Score: "
 
-[node name="TotalScoreLabel" type="Label" parent="VBoxContainer"]
+[node name="TotalScoreLabel" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.960784, 0.592157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.345098, 0.207843, 0.129412, 1)
-theme_override_constants/outline_size = 15
-theme_override_constants/shadow_outline_size = 30
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
 theme_override_font_sizes/font_size = 68
 text = "Total Score: 0"
 horizontal_alignment = 1

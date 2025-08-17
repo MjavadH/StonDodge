@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpusjhskuj8h4"]
+
+[ext_resource type="Script" uid="uid://j4pecw47ro6w" path="res://Enemies/Bosses/GeodeBoss/PathLaser.gd" id="1_h3tma"]
+[ext_resource type="Shader" uid="uid://4w00i6jkbdmw" path="res://Player/Shaders/EnergyBeams.gdshader" id="1_n0y3h"]
+
+[sub_resource type="Gradient" id="Gradient_v2p4m"]
+colors = PackedColorArray(0.282353, 0.862745, 0.972549, 1, 0.541176, 0.290196, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ktla"]
+gradient = SubResource("Gradient_v2p4m")
+fill_from = Vector2(1, 0.00909091)
+fill_to = Vector2(0.522727, 0.0181818)
+
+[sub_resource type="Gradient" id="Gradient_h3tma"]
+colors = PackedColorArray(0.462745, 0, 0.101961, 1, 0.999671, 0, 0.041401, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wo7t4"]
+gradient = SubResource("Gradient_h3tma")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wcg6j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m11f0"]
+noise = SubResource("FastNoiseLite_wcg6j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ldon"]
+shader = ExtResource("1_n0y3h")
+shader_parameter/lightning_noise = SubResource("NoiseTexture2D_m11f0")
+shader_parameter/color_gradient = SubResource("GradientTexture2D_2ktla")
+shader_parameter/use_color_gradient = true
+shader_parameter/color_effect_mod = 0.1
+shader_parameter/intensive = 0.4
+shader_parameter/lightning_thin = 2.0
+shader_parameter/number_lightning = 2
+shader_parameter/speed = 1.0
+shader_parameter/position = 0.5
+shader_parameter/progress = 1.0
+shader_parameter/heat_progress = 0.0
+shader_parameter/heat_gradient = SubResource("GradientTexture1D_wo7t4")
+
+[node name="PathLaser" type="Node2D"]
+script = ExtResource("1_h3tma")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_1ldon")
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="DamageTimer" to="." method="_check_for_collision"]

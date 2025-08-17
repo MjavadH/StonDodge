@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxxw5eudxqv1s"]
+[gd_scene load_steps=16 format=3 uid="uid://cxxw5eudxqv1s"]
 
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_7ot8v"]
 [ext_resource type="Script" uid="uid://cpfmvs70a40f8" path="res://Core/UpgradeRegistry.gd" id="1_aqljo"]
@@ -9,7 +9,13 @@
 [ext_resource type="Resource" uid="uid://dr5wqkieh3bw3" path="res://Data/Upgrades/Thunderbolt/Thunderbolt_SpeedUpgradeData.tres" id="8_gdeqy"]
 [ext_resource type="Resource" uid="uid://dtb05okqadvts" path="res://Data/Upgrades/Thunderbolt/ThunderboltBulletLengthUpgradeData.tres" id="9_7061t"]
 [ext_resource type="Resource" uid="uid://80acpudrox7p" path="res://Data/Upgrades/EmeraldWyrm/EmeraldWyrm_HealthUpgradeData.tres" id="10_gdeqy"]
+[ext_resource type="Resource" uid="uid://cv6qty047c8c" path="res://Data/Upgrades/LunarPhantom/LunarPhantom_SpeedUpgradeData.tres" id="10_nwnbe"]
+[ext_resource type="Resource" uid="uid://cfkgckl6sdfe8" path="res://Data/Upgrades/LunarPhantom/LunarPhantom_FiringDurationData.tres" id="11_nwnbe"]
+[ext_resource type="Resource" uid="uid://d1pxj3bm01c4c" path="res://Data/Upgrades/SolarDragon/SolarDragon_ExplosivePowerUpgradeData.tres" id="12_k0g62"]
+[ext_resource type="Resource" uid="uid://bjjc3f68vfubi" path="res://Data/Upgrades/SolarDragon/SolarDragon_FastChargeUpgradeData.tres" id="13_068pe"]
+[ext_resource type="Resource" uid="uid://clkksnmef4r6j" path="res://Data/Upgrades/SolarDragon/SolarDragon_HealthUpgradeData.tres" id="14_ec786"]
+[ext_resource type="Resource" uid="uid://dp4pfeahqva3h" path="res://Data/Upgrades/SolarDragon/SolarDragon_PowerOrbitUpgradeData.tres" id="15_vlkn4"]
 
 [node name="UpgradeRegistry" type="Node"]
 script = ExtResource("1_aqljo")
-available_upgrades = Array[ExtResource("1_7ot8v")]([ExtResource("2_p2084"), ExtResource("3_aqljo"), ExtResource("4_p2084"), ExtResource("10_gdeqy"), ExtResource("7_7061t"), ExtResource("8_gdeqy"), ExtResource("9_7061t")])
+available_upgrades = Array[ExtResource("1_7ot8v")]([ExtResource("2_p2084"), ExtResource("3_aqljo"), ExtResource("4_p2084"), ExtResource("10_gdeqy"), ExtResource("7_7061t"), ExtResource("8_gdeqy"), ExtResource("9_7061t"), ExtResource("10_nwnbe"), ExtResource("11_nwnbe"), ExtResource("12_k0g62"), ExtResource("13_068pe"), ExtResource("14_ec786"), ExtResource("15_vlkn4")])

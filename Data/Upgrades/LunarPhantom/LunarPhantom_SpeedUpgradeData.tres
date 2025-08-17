@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://cv6qty047c8c"]
+
+[ext_resource type="Texture2D" uid="uid://btb72sflvy2gf" path="res://Data/Upgrades/assets/icon_speed.svg" id="1_s7mjl"]
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_trsii"]
+
+[resource]
+script = ExtResource("1_trsii")
+id = &"lunarphantom_speed_upgrade"
+title = "More Speed"
+icon = ExtResource("1_s7mjl")
+max_level = 2
+cost_per_level = Array[int]([500, 500])
+value_per_level = [1000.0, 1100.0]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

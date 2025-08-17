@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhsbedfhp2t2v"]
+
+[ext_resource type="Script" uid="uid://cysakbi47wqe4" path="res://Enemies/Bosses/GeodeBoss/ArmorShard.gd" id="1_3bru5"]
+[ext_resource type="Texture2D" uid="uid://uirp13uye34t" path="res://Enemies/Bosses/GeodeBoss/assets/ArmorShard1.webp" id="2_y37yr"]
+[ext_resource type="Texture2D" uid="uid://c2wv0u60fer7c" path="res://Enemies/Bosses/GeodeBoss/assets/ArmorShard2.webp" id="3_bip46"]
+[ext_resource type="Texture2D" uid="uid://bm8voeervsqul" path="res://Enemies/Bosses/GeodeBoss/assets/ArmorShard3.webp" id="4_r040u"]
+[ext_resource type="Texture2D" uid="uid://dhw5vxsin36t8" path="res://Enemies/Bosses/GeodeBoss/assets/ArmorShard4.webp" id="5_jmksh"]
+[ext_resource type="Texture2D" uid="uid://cc88msi6265sh" path="res://Enemies/Bosses/GeodeBoss/assets/ArmorShard5.webp" id="6_uycb3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul3y1"]
+radius = 40.0
+
+[node name="ArmorShard" type="Area2D" groups=["Enemy"]]
+collision_layer = 8
+script = ExtResource("1_3bru5")
+armor_shard_textures = Array[Texture]([ExtResource("2_y37yr"), ExtResource("3_bip46"), ExtResource("4_r040u"), ExtResource("5_jmksh"), ExtResource("6_uycb3")])
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y37yr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ul3y1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

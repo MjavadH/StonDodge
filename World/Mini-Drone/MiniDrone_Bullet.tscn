@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcx704oipxd2x"]
+
+[ext_resource type="Script" uid="uid://dkridhb0e4tv1" path="res://World/Mini-Drone/MiniDrone_Bullet.gd" id="1_rk6s5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0hn3"]
+size = Vector2(50, 5)
+
+[node name="MiniDroneBullet" type="Area2D" groups=["Bullet"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_rk6s5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(50, 5)
+offset_right = 50.0
+offset_bottom = 5.0
+color = Color(0.619608, 0.984314, 0.988235, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, 2.5)
+shape = SubResource("RectangleShape2D_b0hn3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

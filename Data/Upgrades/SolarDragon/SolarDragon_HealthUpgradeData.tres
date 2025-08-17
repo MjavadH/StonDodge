@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://clkksnmef4r6j"]
+
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_36l8k"]
+[ext_resource type="Texture2D" uid="uid://dl4ysto34ynyp" path="res://Data/Upgrades/assets/icon_heart.svg" id="1_ftqfy"]
+
+[resource]
+script = ExtResource("1_36l8k")
+id = &"solardragon_health_upgrade"
+title = "More Health"
+icon = ExtResource("1_ftqfy")
+max_level = 2
+cost_per_level = Array[int]([1000, 1000])
+value_per_level = [11, 12]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

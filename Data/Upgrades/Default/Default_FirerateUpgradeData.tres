@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dyqtyt62in7ne"]
 
-[ext_resource type="Texture2D" uid="uid://d2p7lxexaf2dr" path="res://Data/Upgrades/assets/iconfirerate.webp" id="1_70avx"]
+[ext_resource type="Texture2D" uid="uid://dtrxs32w301kv" path="res://Data/Upgrades/assets/icon_firerate.svg" id="1_70avx"]
 [ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="2_1d0qu"]
 
 [resource]
 script = ExtResource("2_1d0qu")
 id = &"default_firerate_upgrade"
+title = "Faster Firing"
 icon = ExtResource("1_70avx")
 max_level = 2
 cost_per_level = Array[int]([700, 700])

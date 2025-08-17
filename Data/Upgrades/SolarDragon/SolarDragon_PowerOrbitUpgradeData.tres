@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" load_steps=3 format=3 uid="uid://dp4pfeahqva3h"]
+
+[ext_resource type="Script" uid="uid://cef7lk3f7n72o" path="res://Data/Upgrades/UpgradeData.gd" id="1_7v1pg"]
+[ext_resource type="Texture2D" uid="uid://cno3unl3w2fyu" path="res://Data/Upgrades/assets/PowerOrbit.svg" id="1_c07ym"]
+
+[resource]
+script = ExtResource("1_7v1pg")
+id = &"solardragon_powerorbit_upgrade"
+title = "Power Orbit"
+icon = ExtResource("1_c07ym")
+max_level = 1
+cost_per_level = Array[int]([1000])
+value_per_level = [150.0]
+metadata/_custom_type_script = "uid://cef7lk3f7n72o"

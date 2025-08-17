@@ -8,7 +8,6 @@ var setting: Dictionary
 
 func _ready() -> void:
 	get_tree().get_root().connect("go_back_requested", _on_back_button_pressed)
-	visible = false
 	setting = GameManager.get_settings()
 	music_button.button_pressed = setting["Music"]
 	
@@ -16,15 +15,12 @@ func _ready() -> void:
 		"fa": language_button.select(0)
 		"en": language_button.select(1)
 
-func ShowSetting():
-	visible = true
-
 func _on_back_button_pressed() -> void:
-	self.visible = false
+	self.hide()
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	if setting["Music"] != toggled_on:
-		MusicPlayer.change_state(toggled_on)
+		MusicPlayer.set_music_enabled(toggled_on)
 		setting["Music"] = toggled_on
 		GameManager.update_settings(setting)
 

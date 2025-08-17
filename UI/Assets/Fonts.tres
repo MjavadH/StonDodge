@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c0rht2jsnjwuf"]
+
+[ext_resource type="FontFile" uid="uid://by7sp70olridv" path="res://UI/Fonts/Orbitron-Medium.ttf" id="1_qd2ir"]
+[ext_resource type="FontFile" uid="uid://dlm6514ya16ck" path="res://UI/Fonts/Emkan Black.woff2" id="2_qd2ir"]
+
+[sub_resource type="FontVariation" id="FontVariation_rk8ne"]
+fallbacks = Array[Font]([ExtResource("2_qd2ir")])
+base_font = ExtResource("1_qd2ir")
+
+[resource]
+default_font = SubResource("FontVariation_rk8ne")

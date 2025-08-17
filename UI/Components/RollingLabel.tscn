@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://fklgkdwl11eb"]
+
+[ext_resource type="Script" uid="uid://dfhfo3m2c4ru0" path="res://UI/Components/RollingLabel.gd" id="1_yotba"]
+
+[node name="RollingLabel" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yotba")
+
+[node name="CurrentLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 1.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="NextLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 1.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+autowrap_mode = 2

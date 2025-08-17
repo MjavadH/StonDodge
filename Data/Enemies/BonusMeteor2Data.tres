@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_iw52w")
 texture = ExtResource("2_o2ddb")
-health = 6
+health = 5
 score_value = 1
 explosion_anim_name = &"PurpleBonusMeteor"
 crack_color = Color(0.0470588, 0.0117647, 0.345098, 1)

@@ -1,40 +1,42 @@
+class_name Bonus
 extends Area2D
 
-@export var speed := 200
-@export var BonusTypes = ""
+signal collected(bonus_type: StringName)
 
-@onready var take_bonus_anim: AnimatedSprite2D = $TakeBonusAnim
+@export var speed: float = 200.0
+
+# --- Node References ---
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var collection_anim: AnimatedSprite2D = $TakeBonusAnim
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var pickup_bonus_sound: AudioStreamPlayer = $PickupBonusSound
 
-var bonus_types = [
-	{ "type": "Heal", "Anim": "Red" },
-	{ "type": "Speed", "Anim": "Blue"},
-	{ "type": "BulletSpeed", "Anim": "Orange"},
-	{ "type": "2x", "Anim": "Orange"}
-]
+var _bonus_type: StringName
 
-func setup(type: Dictionary):
-	BonusTypes = type
-	var sprite_node = get_node("Sprite2D")
-	match type["type"]:
-		"Heal":
-			sprite_node.texture = load("res://Bonus/assets/Bonus_Heal.webp")
-		"Speed":
-			sprite_node.texture = load("res://Bonus/assets/Bonus_Speed.webp")
-		"BulletSpeed":
-			sprite_node.texture = load("res://Bonus/assets/Bonus_BulletSpeed.webp")
-		"2x":
-			sprite_node.texture = load("res://Bonus/assets/Bonus_2x.webp")
+##- Initialization ----------------------------------------------------------##
 
-func _physics_process(delta):
+func initialize(data: BonusData) -> void:
+	_bonus_type = data.bonus_type
+	sprite.texture = data.texture
+	collection_anim.animation = data.collection_anim_name
+
+##- Godot Engine Functions ----------------------------------------------------##
+
+func _physics_process(delta: float) -> void:
 	position.y += speed * delta
+
+##- Signal Handlers -----------------------------------------------------------##
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.apply_bonus(BonusTypes["type"])
+		collected.emit(_bonus_type)
+		pickup_bonus_sound.play()
+		
+		collision_shape.set_deferred("disabled", true)
+		speed = 0
 		sprite.visible = false
-		take_bonus_anim.visible = true
-		take_bonus_anim.play(BonusTypes["Anim"])
+		collection_anim.visible = true
+		collection_anim.play()
 
 func _on_take_bonus_anim_animation_finished() -> void:
-		queue_free()
+	queue_free()

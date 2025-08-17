@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tkljjm6vmv3p"]
+[gd_scene load_steps=8 format=3 uid="uid://tkljjm6vmv3p"]
 
 [ext_resource type="Script" uid="uid://djjbupsxf6d8s" path="res://Core/EquipmentRegistry.gd" id="1_8o0rm"]
 [ext_resource type="Resource" uid="uid://bdnnnknn7kw8r" path="res://Data/Ships/DefaultShipData.tres" id="2_11ayk"]
@@ -6,7 +6,8 @@
 [ext_resource type="Resource" uid="uid://jxj8r83cyfbm" path="res://Data/Ships/ThunderboltShipData.tres" id="3_11ayk"]
 [ext_resource type="Resource" uid="uid://dcvqav1448djf" path="res://Data/Ships/EmeraldWyrmData.tres" id="4_qlkxr"]
 [ext_resource type="Resource" uid="uid://c521p21pbayiv" path="res://Data/Ships/LunarPhantomData.tres" id="5_jglel"]
+[ext_resource type="Resource" uid="uid://damf0dpkc81xi" path="res://Data/Ships/SolarDragonData.tres" id="7_8xgr5"]
 
 [node name="EquipmentRegistry" type="Node"]
 script = ExtResource("1_8o0rm")
-available_ships = Array[ExtResource("2_psehe")]([ExtResource("2_11ayk"), ExtResource("4_qlkxr"), ExtResource("3_11ayk"), ExtResource("5_jglel")])
+available_ships = Array[ExtResource("2_psehe")]([ExtResource("2_11ayk"), ExtResource("4_qlkxr"), ExtResource("3_11ayk"), ExtResource("5_jglel"), ExtResource("7_8xgr5")])

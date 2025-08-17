@@ -5,7 +5,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_inojc"]
 
 [node name="FreeZone" type="Area2D"]
-collision_mask = 2
+collision_layer = 0
+collision_mask = 14
 script = ExtResource("1_kaydh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

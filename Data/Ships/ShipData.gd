@@ -15,7 +15,13 @@ extends Resource
 @export var ship_scene: PackedScene
 
 ##- Available Upgrades --------------------------------------------------------##
-# A list of upgrade IDs that are available for THIS specific ship.
-# These IDs will be used to get the full UpgradeData from the UpgradeRegistry.
 @export_group("Upgrades")
 @export var available_upgrade_ids: Array[StringName]
+
+##- Abilities -----------------------------------------------------------------##=
+@export_group("Abilities")
+@export var abilities: Array[AbilityData]
+
+##- Compatible Bonuses --------------------------------------------------------##
+@export_group("Bonuses")
+@export var compatible_bonuses: Dictionary = {}

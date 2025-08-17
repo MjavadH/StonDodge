@@ -2,7 +2,7 @@
 Start,Start,شروع
 Quit,Quit,خروج
 Settings,Settings,تنظیمات
-Play Music,Play Music,پخش آهنگ
+Play Sound,Play Sound,پخش صدا
 Back,Back,برگشت
 Again,Again,دوباره
 Continue,Continue,ادامه
@@ -18,5 +18,21 @@ Equipped,Equipped,تجهیز شده
 Max Level,Max Level,آخرین سطح
 default,default,پیش‌فرض
 LunarPhantom,LunarPhantom,شبح ماه
-Thunderbolt,Thunderbolt,رعد و برق
+Thunderbolt,Thunderbolt,آذرخش
 Emerald Wyrm,Emerald Wyrm,اژدر زمردین
+Game mode,Game mode,حالت بازی
+Classic,Classic,کلاسیک
+Survival,Survival,بقا
+Boss Rush,Boss Rush,حمله اربابان
+Blackout,Blackout,خاموشی
+More Speed,More Speed,سرعت بیشتر
+More Health,More Health,جان بیشتر
+Increased Range,Increased Range,برد بیشتر
+Faster Firing,Faster Firing,شلیک سریع‌تر
+Faster Cooldown,Faster Cooldown,کاهش تاخیر
+Firing Duration,Firing Duration,شلیک طولانی‌تر
+Solar Dragon,Solar Dragon,اژدهای خورشیدی
+Power Orbit,Power Orbit,موج انفجار
+Fast Charge,Fast Charge,شارژ سریع
+Explosive Power,Explosive Power,قدرت انفجار
+Payload Escort,Payload Escort,حفاظت از محموله

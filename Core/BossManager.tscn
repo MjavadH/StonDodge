@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk23w4v8lap5n"]
+[gd_scene load_steps=8 format=3 uid="uid://dk23w4v8lap5n"]
 
 [ext_resource type="Script" uid="uid://ucqda0m0hp1t" path="res://Core/BossManager.gd" id="1_wia2d"]
-[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Enemies/Bosses/BossData.gd" id="2_hwnh6"]
-[ext_resource type="Resource" uid="uid://cvhaq64on7wq1" path="res://Data/Bosses/Boss1Data.tres" id="3_w24el"]
-[ext_resource type="Resource" uid="uid://vyeiuwibik5a" path="res://Data/Bosses/Boss2Data.tres" id="4_ajwqi"]
-[ext_resource type="Resource" uid="uid://ba8fjapqenm8o" path="res://Data/Bosses/Boss3Data.tres" id="5_mhqks"]
+[ext_resource type="Script" uid="uid://drmmktg16x4rs" path="res://Data/Bosses/BossData.gd" id="2_hwnh6"]
+[ext_resource type="Resource" uid="uid://cvhaq64on7wq1" path="res://Data/Bosses/CrimsonLordBossData.tres" id="3_w24el"]
+[ext_resource type="Resource" uid="uid://vyeiuwibik5a" path="res://Data/Bosses/SkyLancerBossData.tres" id="4_ajwqi"]
+[ext_resource type="Resource" uid="uid://ba8fjapqenm8o" path="res://Data/Bosses/PrismBossData.tres" id="5_mhqks"]
+[ext_resource type="Resource" uid="uid://0jgcf1hicf4l" path="res://Data/Bosses/GeodeBossData.tres" id="6_0yy31"]
+[ext_resource type="Resource" uid="uid://bl8ulkn1w4h42" path="res://Data/Bosses/VortexBossData.tres" id="7_i3mlx"]
 
 [node name="BossManager" type="Node"]
 script = ExtResource("1_wia2d")
-boss_definitions = Array[ExtResource("2_hwnh6")]([ExtResource("3_w24el"), ExtResource("4_ajwqi"), ExtResource("5_mhqks")])
+boss_definitions = Array[ExtResource("2_hwnh6")]([ExtResource("3_w24el"), ExtResource("4_ajwqi"), ExtResource("5_mhqks"), ExtResource("6_0yy31"), ExtResource("7_i3mlx")])

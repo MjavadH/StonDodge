@@ -14,7 +14,6 @@ signal player_hit
 
 ##- Private Variables ---------------------------------------------------------##
 var _players_in_area: Array[Node2D] = []
-var _is_disabled: bool = false
 
 ##- Node References -----------------------------------------------------------##
 @onready var damage_timer: Timer = $DamageTimer
@@ -24,14 +23,9 @@ func _ready() -> void:
 	damage_timer.wait_time = damage_interval
 	damage_timer.one_shot = false
 
-##- Public Functions ----------------------------------------------------------##
-func disable() -> void:
-	_is_disabled = true
-	damage_timer.stop()
-
 ##- Signal Handlers -----------------------------------------------------------##
 func _on_body_entered(body: Node2D) -> void:
-	if _is_disabled or not body.is_in_group("Player"):
+	if not body.is_in_group("Player"):
 		return
 		
 	if not _players_in_area.has(body):
@@ -51,7 +45,7 @@ func _on_body_exited(body: Node2D) -> void:
 			damage_timer.stop()
 
 func _on_damage_timer_timeout() -> void:
-	if _is_disabled or _players_in_area.is_empty():
+	if _players_in_area.is_empty():
 		return
 	
 	_deal_damage_to(_players_in_area)
