@@ -283,13 +283,5 @@ vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("4_r3ry5")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 542.0
-offset_top = 257.0
-offset_right = 1025.0
-offset_bottom = 446.0
-text = "add score"
-
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="pressed" from="Status/MarginContainer/HFlowContainer/BackPanel/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

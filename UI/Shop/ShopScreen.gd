@@ -97,8 +97,3 @@ func _on_shoot_timer_timeout() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/StartMenu/start.tscn")
-
-func _on_button_pressed() -> void:
-	GameManager.add_score_from_enemy(2000)
-	GameManager.finalize_run()
-	_update_displays()
