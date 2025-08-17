@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://douo2voff7wh8"]
+
+[ext_resource type="Script" uid="uid://dkn5x4c4holjw" path="res://Player/Ships/SolarDragon/Abilities/SolarFlare/BurnEffect.gd" id="1_y1sfj"]
+
+[node name="BurnEffect" type="Node"]
+script = ExtResource("1_y1sfj")
+
+[node name="DamageTickTimer" type="Timer" parent="."]
+
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

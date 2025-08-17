@@ -3,6 +3,7 @@ extends BaseShip
 ##- Constants -----------------------------------------------------------------##
 const BULLET_SCENE: PackedScene = preload("res://Player/Ships/SolarDragon/Weapons/SolarPulse/SolarPulse.tscn")
 const SHOOT_SOUND: AudioStream = preload("res://Player/Ships/SolarDragon/Weapons/SolarPulse/assets/Charge.ogg")
+const BURN_EFFECT_SCENE = preload("res://Player/Ships/SolarDragon/Abilities/SolarFlare/BurnEffect.tscn")
 
 @export_group("Photon Dash")
 @export var dash_speed: float = 3000.0
@@ -21,6 +22,10 @@ var explosive_power: int = 1
 ##- Node References -----------------------------------------------------------##
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_hitbox: Area2D = $DashHitbox
+@onready var solar_flare_radius: Area2D = $SolarFlareRadius
+@onready var solar_flare_visual: ColorRect = $SolarFlareRadius/SolarFlareVisual
+@onready var solar_flare_timer: Timer = $SolarFlareTimer
+@onready var solar_flare_tick_timer: Timer = $SolarFlareTickTimer
 
 ##- Godot Engine Functions ----------------------------------------------------##
 
@@ -62,13 +67,20 @@ func _apply_purchased_upgrades() -> void:
 					explosive_power = effect_value
 
 func _activate_special_ability(ability_id: StringName) -> void:
-	if ability_id == &"photon_dash" and _current_state == State.NORMAL:
-		_is_invincible = true
-		_current_state = State.DASHING
-		dash_hitbox.monitoring = true
-		velocity = Vector2.UP * dash_speed
-		dash_timer.start()
-	
+	match ability_id:
+		&"photon_dash":
+			if _current_state == State.NORMAL:
+				_is_invincible = true
+				_current_state = State.DASHING
+				dash_hitbox.monitoring = true
+				velocity = Vector2.UP * dash_speed
+				dash_timer.start()
+		&"solar_flare":
+			solar_flare_radius.monitoring = true
+			solar_flare_visual.show()
+			solar_flare_timer.start()
+			solar_flare_tick_timer.start()
+			
 	_start_ability_cooldown(ability_id)
 
 func _initialize_audio() -> void:
@@ -109,3 +121,16 @@ func _on_dash_hitbox_entered(target: Node2D):
 		target.take_damage(dash_damage)
 		if target.is_in_group("Boss"):
 			_current_state = State.NORMAL
+
+func _on_solar_flare_tick_timer_timeout() -> void:
+	var targets = solar_flare_radius.get_overlapping_areas() + solar_flare_radius.get_overlapping_bodies()
+	for target in targets:
+		if target.is_in_group("Enemy"):
+			if not target.find_child("BurnEffect", false):
+				var burn_effect = BURN_EFFECT_SCENE.instantiate()
+				target.add_child(burn_effect)
+
+func _on_solar_flare_timer_timeout() -> void:
+	solar_flare_tick_timer.stop()
+	solar_flare_radius.set_deferred("monitoring",false)
+	solar_flare_visual.hide()

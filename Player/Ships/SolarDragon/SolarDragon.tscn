@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://d025xmr31vha1"]
+[gd_scene load_steps=32 format=3 uid="uid://d025xmr31vha1"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_bshm3"]
 [ext_resource type="Texture2D" uid="uid://d1gfrpq4j4yq8" path="res://Player/Ships/SolarDragon/assets/damaged.webp" id="2_4mpi5"]
 [ext_resource type="Script" uid="uid://dnxf3pfe6ohys" path="res://Player/Ships/SolarDragon/SolarDragon.gd" id="2_tmre1"]
 [ext_resource type="Texture2D" uid="uid://uy3dxf8i4yj" path="res://Player/Ships/SolarDragon/assets/fly_off.webp" id="3_tmre1"]
 [ext_resource type="Texture2D" uid="uid://cyqkgqtv1t160" path="res://Player/Ships/SolarDragon/assets/fly.webp" id="4_wyujo"]
+[ext_resource type="Shader" uid="uid://c5xnutdco3shf" path="res://Enemies/shader/SoftGlowCircle.gdshader" id="6_wyujo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oinu"]
 atlas = ExtResource("2_4mpi5")
@@ -180,6 +181,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmre1"]
 size = Vector2(154, 138)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5oinu"]
+shader = ExtResource("6_wyujo")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/radius = 0.25
+shader_parameter/edge_softness = 0.1
+shader_parameter/glow_color = Color(1, 0.8, 0.2, 0.5)
+shader_parameter/glow_radius = 0.5
+shader_parameter/glow_edge_softness = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmre1"]
+radius = 300.0
+
 [node name="SolarDragon" instance=ExtResource("1_bshm3")]
 script = ExtResource("2_tmre1")
 dash_speed = 3000.0
@@ -199,13 +212,46 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox" index="0"]
 shape = SubResource("RectangleShape2D_tmre1")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="10"]
+[node name="SolarFlareRadius" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="SolarFlareVisual" type="ColorRect" parent="SolarFlareRadius" index="0"]
+visible = false
+material = SubResource("ShaderMaterial_5oinu")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -264.0
+offset_right = 264.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolarFlareRadius" index="1"]
+shape = SubResource("CircleShape2D_tmre1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="11"]
 build_mode = 1
 polygon = PackedVector2Array(-30, -15, -24, -24, -25, -34, -23, -37, -23, -49, -12, -57, -10, -50, -4, -62, 4, -65, -1, -49, 15, -56, 11, -46, 24, -32, 26, -12, 17, 2, 41, -12, 59, -26, 55, 3, 45, 20, 13, 33, 16, 43, 16, 64, 6, 59, 2, 35, -3, 63, -8, 60, -17, 36, -22, 55, -33, 64, -33, 53, -23, 25, -40, 27, -53, 16, -59, -4, -57, -27, -42, -12, -33, 5, -27, 14, -13, -3, -17, -11, -23, -7)
 
-[node name="DashTimer" type="Timer" parent="." index="11"]
+[node name="DashTimer" type="Timer" parent="." index="12"]
 one_shot = true
+
+[node name="SolarFlareTimer" type="Timer" parent="." index="13"]
+wait_time = 4.0
+one_shot = true
+
+[node name="SolarFlareTickTimer" type="Timer" parent="." index="14"]
+wait_time = 0.3
 
 [connection signal="area_entered" from="DashHitbox" to="." method="_on_dash_hitbox_entered"]
 [connection signal="body_entered" from="DashHitbox" to="." method="_on_dash_hitbox_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="SolarFlareTimer" to="." method="_on_solar_flare_timer_timeout"]
+[connection signal="timeout" from="SolarFlareTickTimer" to="." method="_on_solar_flare_tick_timer_timeout"]
