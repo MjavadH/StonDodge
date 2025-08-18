@@ -60,7 +60,7 @@ func _activate_special_ability(ability_id: StringName) -> void:
 			self.set_collision_layer_value(1, false)
 			invisibility_sound_player.play()
 		&"RunicExplosion":
-			var bomb_instance = RUNIC_BOMB_SCENE.instantiate()
+			var bomb_instance: RunicBomb = RUNIC_BOMB_SCENE.instantiate()
 			bomb_instance.global_position = self.global_position
 			abilities_container.add_child(bomb_instance)
 	
