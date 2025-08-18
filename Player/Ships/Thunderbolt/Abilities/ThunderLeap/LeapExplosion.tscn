@@ -118,5 +118,6 @@ frame_progress = 1.0
 
 [node name="ArmingTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="ArmingTimer" to="." method="_on_arming_finished"]
