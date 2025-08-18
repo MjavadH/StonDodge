@@ -86,8 +86,8 @@ func die() -> void:
 	
 	boss_collision.set_deferred("disabled", true)
 	boss_damage_area_collision.set_deferred("disabled", true)
-	damage_area.monitorable = false
-	damage_area.monitoring = false
+	damage_area.set_deferred("monitorable", false)
+	damage_area.set_deferred("monitoring", false)
 	
 	body.visible = false
 	explosion_anim.visible = true
