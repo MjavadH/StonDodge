@@ -222,7 +222,7 @@ func _on_bonus_timer_timeout() -> void:
 	spawn_meteor(true)
 	# Increase difficulty by reducing spawn time.
 	if spawn_timer.wait_time >= 0.4 and not spawn_timer.is_stopped():
-		spawn_timer.wait_time -= 0.1
+		spawn_timer.wait_time -= 0.05
 
 func _on_bonus_collected(bonus_type: StringName) -> void:
 	# Safely apply the bonus to the current player instance.

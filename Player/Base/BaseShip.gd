@@ -351,4 +351,4 @@ func _on_bullet_speed_bonus_timer_timeout() -> void:
 	_recalculate_stats()
 
 func _on_x_bonus_timer_timeout() -> void:
-	GameManager.set_score_multiplier(GameManager.get_score_multiplier() - 2)
+	GameManager.set_score_multiplier(GameManager.get_score_multiplier() / 2)

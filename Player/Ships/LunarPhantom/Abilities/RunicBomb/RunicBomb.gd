@@ -1,7 +1,7 @@
 class_name RunicBomb
 extends Area2D
 
-@export var damage: int = 4
+@export var damage: int = 10
 
 var _is_armed: bool = true
 
