@@ -38,7 +38,7 @@ func _ready() -> void:
 	BossManager.boss_defeated.connect(_on_boss_defeated)
 	multiplier_label.hide()
 	boss_panel.hide()
-	_on_score_multiplier_changed(1)
+	_on_score_multiplier_changed(GameManager.get_score_multiplier())
 	# Display the initial score.
 	score_label.set_value_instantly(0)
 	panel.custom_minimum_size.y = screen_rect.size.y * 0.05

@@ -40,6 +40,7 @@ func _ready() -> void:
 	var screen_rect: Rect2 = get_viewport().get_visible_rect()
 	
 	GameManager.reset_current_score()
+	GameManager.set_score_multiplier(1)
 	_setup_offscreen_nodes(screen_rect)
 	_resize_enemy_path(screen_rect)
 	_spawn_player_ship(screen_rect)
