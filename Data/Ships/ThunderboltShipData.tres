@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_mo4lt"]
 [ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_pcql5"]
-[ext_resource type="Resource" uid="uid://dvih0pgdatne0" path="res://Data/Abilities/Thunderbolt/Thunderstorm.tres" id="2_o5eun"]
-[ext_resource type="Resource" uid="uid://clvvlqa33mab0" path="res://Data/Abilities/Thunderbolt/ThunderLeap.tres" id="3_nae5l"]
+[ext_resource type="Resource" uid="uid://dvih0pgdatne0" path="res://Data/Abilities/Thunderbolt/ThunderLeap.tres" id="2_o5eun"]
+[ext_resource type="Resource" uid="uid://clvvlqa33mab0" path="res://Data/Abilities/Thunderbolt/Thunderstorm.tres" id="3_nae5l"]
 [ext_resource type="Texture2D" uid="uid://c1q3o2ib2tlhi" path="res://Player/Ships/Thunderbolt/assets/fly.webp" id="3_o5eun"]
 [ext_resource type="PackedScene" uid="uid://knh3likqgnqc" path="res://Player/Ships/Thunderbolt/Thunderbolt.tscn" id="3_pcql5"]
 
