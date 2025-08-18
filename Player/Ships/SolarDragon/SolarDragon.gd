@@ -115,10 +115,10 @@ func _fire_weapon() -> void:
 func _on_dash_timer_timeout() -> void:
 	_current_state = State.NORMAL
 	dash_hitbox.monitoring = false
-	self.self_modulate = Color.from_rgba8(255,200,0,128)
+	self.modulate = Color.from_rgba8(255,200,0,128)
 	await get_tree().create_timer(1.5).timeout
 	_is_invincible = false
-	self.self_modulate = Color.WHITE
+	self.modulate = Color.WHITE
 
 func _on_dash_hitbox_entered(target: Node2D):
 	if target.is_in_group("Enemy") and target.has_method("take_damage"):
