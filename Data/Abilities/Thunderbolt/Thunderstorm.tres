@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://clvvlqa33mab0"]
 
 [ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_8if7q"]
-[ext_resource type="Texture2D" uid="uid://ccp5om5n4x3yn" path="res://Data/Abilities/assets/Thunderstorm.webp" id="1_nrciu"]
+[ext_resource type="Texture2D" uid="uid://cxmb5ofddp20u" path="res://Data/Abilities/assets/Thunderstorm.svg" id="1_nrciu"]
 
 [resource]
 script = ExtResource("1_8if7q")

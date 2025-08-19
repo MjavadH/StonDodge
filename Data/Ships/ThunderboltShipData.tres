@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=8 format=3 uid="uid://jxj8r83cyfbm"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=7 format=3 uid="uid://jxj8r83cyfbm"]
 
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_mo4lt"]
 [ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_pcql5"]
@@ -7,15 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c1q3o2ib2tlhi" path="res://Player/Ships/Thunderbolt/assets/fly.webp" id="3_o5eun"]
 [ext_resource type="PackedScene" uid="uid://knh3likqgnqc" path="res://Player/Ships/Thunderbolt/Thunderbolt.tscn" id="3_pcql5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nae5l"]
-atlas = ExtResource("3_o5eun")
-region = Rect2(0, 0, 106, 116)
-
 [resource]
 script = ExtResource("1_mo4lt")
 id = &"Thunderbolt"
 ship_name = "Thunderbolt"
-icon = SubResource("AtlasTexture_nae5l")
+icon = ExtResource("3_o5eun")
 cost = 5000
 ship_scene = ExtResource("3_pcql5")
 available_upgrade_ids = Array[StringName]([&"thunderbolt_health_upgrade", &"default_firerate_upgrade", &"thunderbolt_speed_upgrade", &"thunderbolt_bullet_length_upgrade"])

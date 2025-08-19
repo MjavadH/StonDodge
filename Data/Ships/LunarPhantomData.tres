@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShipData" load_steps=8 format=3 uid="uid://c521p21pbayiv"]
+[gd_resource type="Resource" script_class="ShipData" load_steps=7 format=3 uid="uid://c521p21pbayiv"]
 
 [ext_resource type="Script" uid="uid://dvkagn0jer5ew" path="res://Data/Ships/ShipData.gd" id="1_t23h8"]
 [ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="1_yuycj"]
@@ -7,15 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://b8xiyuhnkyt7s" path="res://Player/Ships/LunarPhantom/LunarPhantom.tscn" id="3_xcu5u"]
 [ext_resource type="Texture2D" uid="uid://bsgsr1hoh1qsu" path="res://Player/Ships/LunarPhantom/assets/fly.webp" id="4_yuycj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dvts"]
-atlas = ExtResource("4_yuycj")
-region = Rect2(0, 0, 108.12, 120.004)
-
 [resource]
 script = ExtResource("1_t23h8")
 id = &"LunarPhantom"
 ship_name = "LunarPhantom"
-icon = SubResource("AtlasTexture_4dvts")
+icon = ExtResource("4_yuycj")
 cost = 10000
 ship_scene = ExtResource("3_xcu5u")
 available_upgrade_ids = Array[StringName]([&"lunarphantom_speed_upgrade", &"lunarphantom_firing_duration_upgrade"])

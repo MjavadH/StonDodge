@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6r42e4h7cl5i"
-path="res://.godot/imported/EmeraldShell.webp-605f8bba4eec76f05a669b940b3af567.ctex"
+uid="uid://b54lmdbvjac8v"
+path="res://.godot/imported/EmeraldShell.svg-3c27631a0a083226c4a09168292865d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Abilities/assets/EmeraldShell.webp"
-dest_files=["res://.godot/imported/EmeraldShell.webp-605f8bba4eec76f05a669b940b3af567.ctex"]
+source_file="res://Data/Abilities/assets/EmeraldShell.svg"
+dest_files=["res://.godot/imported/EmeraldShell.svg-3c27631a0a083226c4a09168292865d6.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

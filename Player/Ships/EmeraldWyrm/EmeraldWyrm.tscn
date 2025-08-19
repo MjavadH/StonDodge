@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwgqsh7qi22n5"]
+[gd_scene load_steps=17 format=3 uid="uid://cwgqsh7qi22n5"]
 
 [ext_resource type="PackedScene" uid="uid://duvwc1uuvlxjq" path="res://Player/Base/BaseShip.tscn" id="1_jlpmp"]
 [ext_resource type="Script" uid="uid://cvxmgdmndt4dj" path="res://Player/Ships/EmeraldWyrm/EmeraldWyrm.gd" id="2_2u3fq"]
@@ -7,57 +7,51 @@
 [ext_resource type="Texture2D" uid="uid://cfisbrmo44npf" path="res://Player/Ships/EmeraldWyrm/assets/fly.webp" id="4_2n8ai"]
 [ext_resource type="AudioStream" uid="uid://cb4b1whbmnhdk" path="res://Player/Ships/EmeraldWyrm/assets/GearOverclock_On.ogg" id="6_2u3fq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u8ja2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u3fq"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(0, 0, 111, 130)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tppd6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n8ai"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(111, 0, 111, 130)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gik1c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ja2"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(222, 0, 111, 130)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0sal5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tppd6"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(333, 0, 111, 130)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uogla"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gik1c"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(444, 0, 111, 130)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_osshd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sal5"]
 atlas = ExtResource("2_kcfd8")
 region = Rect2(555, 0, 111, 130)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uogla"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(666, 0, 111, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osshd"]
+atlas = ExtResource("2_kcfd8")
+region = Rect2(777, 0, 111, 130)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6o17"]
 atlas = ExtResource("2_kcfd8")
-region = Rect2(0, 130, 111, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbfq7"]
-atlas = ExtResource("2_kcfd8")
-region = Rect2(111, 130, 111, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4nvhn"]
-atlas = ExtResource("2_kcfd8")
-region = Rect2(222, 130, 111, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctivc"]
-atlas = ExtResource("2_kcfd8")
-region = Rect2(333, 130, 111, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ypnvd"]
-atlas = ExtResource("2_kcfd8")
-region = Rect2(444, 130, 111, 130)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yllt3"]
-atlas = ExtResource("2_kcfd8")
-region = Rect2(555, 130, 111, 130)
+region = Rect2(888, 0, 111, 130)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2rua"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u3fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n8ai")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u8ja2")
 }, {
@@ -78,21 +72,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h6o17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbfq7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4nvhn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctivc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ypnvd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yllt3")
 }],
 "loop": false,
 "name": &"damaged",
@@ -102,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_2u3fq")
 }],
-"loop": true,
+"loop": false,
 "name": &"down",
 "speed": 10.0
 }, {
@@ -110,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_2n8ai")
 }],
-"loop": true,
+"loop": false,
 "name": &"up",
 "speed": 10.0
 }]
@@ -120,7 +99,7 @@ script = ExtResource("2_2u3fq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_d2rua")
-animation = &"up"
+animation = &"down"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="9"]
 build_mode = 1

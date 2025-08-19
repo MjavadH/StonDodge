@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityData" load_steps=3 format=3 uid="uid://cbhmyfaao4c5u"]
 
-[ext_resource type="Texture2D" uid="uid://6r42e4h7cl5i" path="res://Data/Abilities/assets/EmeraldShell.webp" id="1_ry7ia"]
+[ext_resource type="Texture2D" uid="uid://b54lmdbvjac8v" path="res://Data/Abilities/assets/EmeraldShell.svg" id="1_ry7ia"]
 [ext_resource type="Script" uid="uid://b3bphqh86dvme" path="res://Data/Abilities/AbilityData.gd" id="2_ja0xb"]
 
 [resource]

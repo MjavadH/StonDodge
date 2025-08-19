@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccp5om5n4x3yn"
-path="res://.godot/imported/Thunderstorm.webp-b79fcaead362a8a5798aed4eba2e864b.ctex"
+uid="uid://cxmb5ofddp20u"
+path="res://.godot/imported/Thunderstorm.svg-2ca63c1038f8dfceaa9b4b3f306d2d36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Abilities/assets/Thunderstorm.webp"
-dest_files=["res://.godot/imported/Thunderstorm.webp-b79fcaead362a8a5798aed4eba2e864b.ctex"]
+source_file="res://Data/Abilities/assets/Thunderstorm.svg"
+dest_files=["res://.godot/imported/Thunderstorm.svg-2ca63c1038f8dfceaa9b4b3f306d2d36.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
