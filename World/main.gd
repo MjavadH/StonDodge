@@ -17,6 +17,7 @@ const PAYLOAD_SCENE: PackedScene = preload("res://World/Payload/Payload.tscn")
 @onready var in_game_hud: InGameHUD = $InGameHUD
 @onready var blackout_overlay: BlackoutOverlay = $EffectsLayer/BlackoutOverlay
 @onready var background_scene: Background = $Background
+@onready var frame_vignette: ColorRect = $EffectsLayer/FrameVignette
 
 # Containers for spawned objects
 @onready var meteors_container: Node = $Meteors
@@ -145,6 +146,8 @@ func _spawn_player_ship(screen_rect: Rect2) -> void:
 	_player_instance.died.connect(_on_player_died)
 	_player_instance.took_damage.connect(_on_player_took_damage)
 	_player_instance.request_drone.connect(_on_player_request_drone)
+	_player_instance.slow_motion_started.connect(_on_player_slow_motion_started)
+	_player_instance.slow_motion_ended.connect(_on_player_slow_motion_ended)
 
 func _start_payload_mode():
 	_payload_instance = PAYLOAD_SCENE.instantiate()
@@ -177,7 +180,21 @@ func _resize_enemy_path(screen_rect: Rect2) -> void:
 	var point_y: float = path_curve.get_point_position(0).y
 	path_curve.set_point_position(0, Vector2(0, point_y))
 	path_curve.set_point_position(1, Vector2(screen_rect.size.x, point_y))
-	
+
+func _show_frame_vignette(effect_color: Color) -> void:
+	var mat: ShaderMaterial = frame_vignette.material as ShaderMaterial
+	if mat:
+		mat.set_shader_parameter("glow_color", effect_color)
+	frame_vignette.show()
+	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(mat, "shader_parameter/width", 0.3, 0.2)
+
+func _hide_frame_vignette() -> void:
+	var mat: ShaderMaterial = frame_vignette.material as ShaderMaterial
+	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(mat, "shader_parameter/width", 0.0, 0.2)
+	frame_vignette.hide()
+
 ##- Boss Trigger Logic --------------------------------------------------------##
 func _trigger_next_boss_encounter() -> void:
 	# Check if there are more bosses in the sequence.
@@ -260,10 +277,18 @@ func _on_player_died() -> void:
 func _on_player_took_damage() -> void:
 	# Visual feedback for player damage.
 	background_scene.flash_drop_color(Color.RED)
+	_show_frame_vignette(Color.from_rgba8(220,0,35,100))
 	camera_2d.start_shake()
 	await get_tree().create_timer(1.2).timeout
 	
 	background_scene.flash_drop_color()
+	_hide_frame_vignette()
+
+func _on_player_slow_motion_started() -> void:
+	_show_frame_vignette(Color.from_rgba8(0,185,220,100))
+
+func _on_player_slow_motion_ended() -> void:
+	_hide_frame_vignette()
 
 func _on_player_request_drone() -> void:
 	if _minidrone_instance == null:

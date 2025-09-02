@@ -15,7 +15,7 @@ config/name_localized={
 "en": "StonDodge",
 "fa": "شهاب‌گریز"
 }
-config/version="5.1.0"
+config/version="5.2.0"
 run/main_scene="uid://b7r7ju1ydy6t5"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")

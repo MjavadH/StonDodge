@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf785h3r5w0f4"]
+[gd_scene load_steps=11 format=3 uid="uid://bf785h3r5w0f4"]
 
 [ext_resource type="Script" uid="uid://gd88tygb4a67" path="res://World/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://c06pcay13c6hp" path="res://World/Components/background.tscn" id="2_xpxos"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://47u51qruffq0" path="res://UI/Pause/pause.tscn" id="5_4dugh"]
 [ext_resource type="Script" uid="uid://c5owqjnxhua7a" path="res://World/Components/camera_2d.gd" id="5_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dx01yci07rsln" path="res://World/Components/BlackoutOverlay.tscn" id="5_xpxos"]
+[ext_resource type="Shader" uid="uid://cgs4ccqmobx58" path="res://World/Assets/FrameVignette.gdshader" id="6_1hcjw"]
 [ext_resource type="PackedScene" uid="uid://rvrodyo67gq3" path="res://World/Components/free_zone.tscn" id="7_4dugh"]
 
 [sub_resource type="Curve2D" id="Curve2D_53q0u"]
@@ -13,6 +14,13 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1080, 0)
 }
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyyff"]
+shader = ExtResource("6_1hcjw")
+shader_parameter/glow_color = Color(0, 0.72549, 0.862745, 0.392157)
+shader_parameter/width = 0.0
+shader_parameter/intensity = 0.35
+shader_parameter/falloff = 7.5
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xwkvk")
@@ -64,6 +72,15 @@ rotation = -3.14159
 
 [node name="BlackoutOverlay" parent="EffectsLayer" instance=ExtResource("5_xpxos")]
 visible = false
+
+[node name="FrameVignette" type="ColorRect" parent="EffectsLayer"]
+visible = false
+material = SubResource("ShaderMaterial_pyyff")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="InGameHUD" parent="." instance=ExtResource("3_8pwpp")]
 

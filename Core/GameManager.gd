@@ -39,7 +39,8 @@ var _owned_ship_ids: Array[StringName] = [DEFAULT_SHIP_ID]
 var _upgrade_levels: Dictionary = {}
 var _current_settings: Dictionary = {}
 
-var t0: int = 0
+var current_slow_mo_multiplier: float = 1.0
+
 ##- Godot Engine Functions ----------------------------------------------------##
 
 func _ready() -> void:
@@ -106,6 +107,14 @@ func finalize_run() -> void:
 		_high_score = _current_game_score
 	total_score_updated.emit(_total_score)
 	save_game()
+	
+##- Public API: Bonus ---------------------------------------------------------##
+
+func set_slow_mo_multiplier(multiplier: float) -> void:
+	current_slow_mo_multiplier = multiplier
+
+func get_slow_mo_multiplier() -> float:
+	return current_slow_mo_multiplier
 
 ##- Public API: Equipment -----------------------------------------------------##
 

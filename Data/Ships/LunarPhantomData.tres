@@ -20,6 +20,7 @@ compatible_bonuses = {
 &"2x": 50,
 &"Heal": 10,
 &"Mini-Drone": 10,
+&"Slow-Mo": 5,
 &"Speed": 30
 }
 metadata/_custom_type_script = "uid://dvkagn0jer5ew"

@@ -6,6 +6,8 @@ signal died
 signal health_updated(current: int, max: int)
 signal took_damage
 signal request_drone
+signal slow_motion_started
+signal slow_motion_ended
 # Emitted when an ability is successfully activated.
 signal ability_activated(ability_id: StringName)
 # Emitted when a cooldown finishes and an ability is ready again.
@@ -68,6 +70,7 @@ var marginY: int = 70
 @onready var speed_bonus_timer: Timer = $SpeedBonusTimer
 @onready var bullet_speed_bonus_timer: Timer = $BulletSpeedBonusTimer
 @onready var _2x_bonus_timer: Timer = $"2xBonusTimer"
+@onready var slow_mo_timer: Timer = $SlowMoTimer
 
 ##- Godot Engine Functions ----------------------------------------------------##
 func _ready() -> void:
@@ -168,6 +171,10 @@ func apply_bonus(type: StringName) -> void:
 			_2x_bonus_timer.start()
 		"Mini-Drone":
 			request_drone.emit()
+		"Slow-Mo":
+			GameManager.set_slow_mo_multiplier(0.3)
+			slow_motion_started.emit()
+			slow_mo_timer.start(5.0)
 	_recalculate_stats()
 
 func set_paused(paused: bool) -> void:
@@ -352,3 +359,7 @@ func _on_bullet_speed_bonus_timer_timeout() -> void:
 
 func _on_x_bonus_timer_timeout() -> void:
 	GameManager.set_score_multiplier(GameManager.get_score_multiplier() / 2)
+
+func _on_slow_mo_timer_timeout() -> void:
+	GameManager.set_slow_mo_multiplier(1.0)
+	slow_motion_ended.emit()

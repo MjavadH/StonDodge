@@ -11,6 +11,7 @@ var _score_value: int
 var _is_bonus_carrier: bool
 var _is_dead: bool = false
 var _speed: float
+var _base_speed: float
 
 # --- Node References ---
 @onready var sprite: Sprite2D = $Sprite2D
@@ -31,7 +32,7 @@ func initialize(data: MeteorData) -> void:
 	# Set a random scale and speed.
 	var random_scale: float = randf_range(0.7, 1.05)
 	scale = Vector2(random_scale, random_scale)
-	_speed = randf_range(160.0, 320.0)
+	_base_speed = randf_range(160.0, 320.0)
 	
 	# Initialize shader
 	if sprite.material:
@@ -51,6 +52,7 @@ func is_dead() -> bool:
 ##- Godot Engine Functions ----------------------------------------------------##
 
 func _physics_process(delta: float) -> void:
+	_speed = _base_speed * GameManager.get_slow_mo_multiplier()
 	position.y += _speed * delta
 	sprite.rotation += delta
 

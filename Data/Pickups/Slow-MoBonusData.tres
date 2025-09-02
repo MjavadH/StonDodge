@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://c5nq5f6xj6p5n"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_wo1hm"]
+[ext_resource type="Texture2D" uid="uid://bgg85xkpg4fw7" path="res://Bonus/assets/Bonus_Slow-Mo.webp" id="2_wo1hm"]
+
+[resource]
+script = ExtResource("1_wo1hm")
+bonus_type = &"Slow-Mo"
+texture = ExtResource("2_wo1hm")
+collection_anim_name = &"Blue"
+weight = 3
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"
