@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beo86yrv60ssx"
-path="res://.godot/imported/BonusMeteor1.webp-bbcd33745a0f89bf4643a24816193710.ctex"
+uid="uid://do4emwugf0ncc"
+path="res://.godot/imported/Meteor20.webp-a0c6f3753fdb81c7114dbb6c09577da1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/assets/BonusMeteor1.webp"
-dest_files=["res://.godot/imported/BonusMeteor1.webp-bbcd33745a0f89bf4643a24816193710.ctex"]
+source_file="res://Enemies/assets/Meteor20.webp"
+dest_files=["res://.godot/imported/Meteor20.webp-a0c6f3753fdb81c7114dbb6c09577da1.ctex"]
 
 [params]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MeteorData" load_steps=3 format=3 uid="uid://do8f8of3quyti"]
+
+[ext_resource type="Script" uid="uid://b7igij4bxr8q8" path="res://Data/Enemies/MeteorData.gd" id="1_sneto"]
+[ext_resource type="Texture2D" uid="uid://cjxgojpbvv8kk" path="res://Enemies/assets/Meteor13.webp" id="2_sneto"]
+
+[resource]
+script = ExtResource("1_sneto")
+texture = ExtResource("2_sneto")
+health = 5
+score_value = 5
+explosion_anim_name = &"OrangeMeteor"
+crack_color = Color(0.760784, 0.4, 0.0313726, 1)
+is_bonus_carrier = false
+metadata/_custom_type_script = "uid://b7igij4bxr8q8"

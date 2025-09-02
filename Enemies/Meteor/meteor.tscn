@@ -1,8 +1,8 @@
-[gd_scene load_steps=123 format=3 uid="uid://hhektbtipbtg"]
+[gd_scene load_steps=141 format=3 uid="uid://hhektbtipbtg"]
 
 [ext_resource type="Script" uid="uid://bi5ixry07snoy" path="res://Enemies/Meteor/meteor.gd" id="1_034cq"]
 [ext_resource type="Texture2D" uid="uid://vqie3uciacjt" path="res://Enemies/assets/449.png" id="3_q508k"]
-[ext_resource type="Texture2D" uid="uid://cvso1wln8166y" path="res://Enemies/assets/BonusMeteor5.webp" id="3_srygd"]
+[ext_resource type="Texture2D" uid="uid://do4emwugf0ncc" path="res://Enemies/assets/Meteor20.webp" id="3_srygd"]
 [ext_resource type="Texture2D" uid="uid://byx4yvgful5ox" path="res://Enemies/assets/293.png" id="4_wcywo"]
 [ext_resource type="Shader" uid="uid://dqyme6bh3n5qa" path="res://Enemies/shader/crack_shader.gdshader" id="5_0f66u"]
 [ext_resource type="AudioStream" uid="uid://dv4qb08xx5b4d" path="res://Enemies/assets/Meteor_Explosion_Sound_01.ogg" id="6_ai0j4"]
@@ -206,6 +206,78 @@ region = Rect2(448, 512, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ddjr"]
 atlas = ExtResource("4_wcywo")
 region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai0j4"]
+atlas = ExtResource("3_q508k")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayjp8"]
+atlas = ExtResource("3_q508k")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd7ma"]
+atlas = ExtResource("3_q508k")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywft0"]
+atlas = ExtResource("3_q508k")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ochh2"]
+atlas = ExtResource("3_q508k")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e6vc"]
+atlas = ExtResource("3_q508k")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ysxg"]
+atlas = ExtResource("3_q508k")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yke0v"]
+atlas = ExtResource("3_q508k")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nrdw"]
+atlas = ExtResource("3_q508k")
+region = Rect2(512, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt8lm"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkqdi"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etpe1"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqgfj"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceu3l"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcsvf"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x2m1"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3guk3"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2pj"]
+atlas = ExtResource("4_wcywo")
+region = Rect2(512, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q508k"]
 atlas = ExtResource("3_q508k")
@@ -623,6 +695,70 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ai0j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayjp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywft0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ochh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e6vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ysxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yke0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nrdw")
+}],
+"loop": false,
+"name": &"GreenBonusMeteor",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt8lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkqdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etpe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqgfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceu3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcsvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x2m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3guk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2pj")
+}],
+"loop": false,
+"name": &"GreenMeteor",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q508k")
 }, {
 "duration": 1.0,
@@ -866,13 +1002,14 @@ material = SubResource("ShaderMaterial_0f66u")
 texture = ExtResource("3_srygd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_hxk0h")
 
 [node name="ExplosionAnim" type="AnimatedSprite2D" parent="."]
 visible = false
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ur8yj")
-animation = &"WhiteMeteor"
+animation = &"BlueBonusMeteor"
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0f66u")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MeteorData" load_steps=3 format=3 uid="uid://d2r4e43vg8dwi"]
+
+[ext_resource type="Script" uid="uid://b7igij4bxr8q8" path="res://Data/Enemies/MeteorData.gd" id="1_pojj3"]
+[ext_resource type="Texture2D" uid="uid://dnkg43yx0hbqf" path="res://Enemies/assets/BonusMeteor5.webp" id="2_aild0"]
+
+[resource]
+script = ExtResource("1_pojj3")
+texture = ExtResource("2_aild0")
+health = 5
+score_value = 1
+explosion_anim_name = &"PurpleBonusMeteor"
+crack_color = Color(0.341176, 0.0862745, 0.662745, 1)
+is_bonus_carrier = true
+metadata/_custom_type_script = "uid://b7igij4bxr8q8"
