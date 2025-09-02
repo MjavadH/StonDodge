@@ -192,7 +192,7 @@ func _show_frame_vignette(effect_color: Color) -> void:
 func _hide_frame_vignette() -> void:
 	var mat: ShaderMaterial = frame_vignette.material as ShaderMaterial
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(mat, "shader_parameter/width", 0.0, 0.2)
+	await tween.tween_property(mat, "shader_parameter/width", 0.0, 0.2).finished
 	frame_vignette.hide()
 
 ##- Boss Trigger Logic --------------------------------------------------------##
