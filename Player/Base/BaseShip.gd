@@ -17,6 +17,8 @@ signal ability_ready(ability_id: StringName)
 ##- Constants -----------------------------------------------------------------##
 const DEFAULT_BULLET_SCENE : PackedScene = preload("res://Player/Ships/Default/Weapons/default_bullet.tscn")
 const DEFAULT_SHOOT_SOUND: AudioStream = preload("res://Player/Ships/Default/assets/default_bullet_sound.ogg")
+const SHIELD_SCENE: PackedScene = preload("res://World/Shield/Shield.tscn")
+
 const STOP_THRESHOLD = 5.0
 const HORIZONTAL_THRESHOLD = 0.3
 
@@ -41,6 +43,8 @@ var _is_bullet_speed_bonus_active: bool = false
 var _shoot_sound_pool: Array[AudioStreamPlayer] = []
 var _shoot_audio_pool_size: int = 8
 var _ability_cooldown_timers: Dictionary = {}
+var _shield_instance: Shield = null
+
 #  --- Dependencies ---
 var _dependencies: Dictionary
 var bullet_container: Node
@@ -175,6 +179,14 @@ func apply_bonus(type: StringName) -> void:
 			GameManager.set_slow_mo_multiplier(0.3)
 			slow_motion_started.emit()
 			slow_mo_timer.start(5.0)
+		"MeteorCrate":
+			GameManager.add_score(200,false)
+		"Shield":
+			if is_instance_valid(_shield_instance):
+				return
+			_shield_instance = SHIELD_SCENE.instantiate()
+			call_deferred("add_child",_shield_instance)
+			_shield_instance.shield_destroyed.connect(_on_bonus_shield_destroyed)
 	_recalculate_stats()
 
 func set_paused(paused: bool) -> void:
@@ -363,3 +375,7 @@ func _on_x_bonus_timer_timeout() -> void:
 func _on_slow_mo_timer_timeout() -> void:
 	GameManager.set_slow_mo_multiplier(1.0)
 	slow_motion_ended.emit()
+	
+func _on_bonus_shield_destroyed() -> void:
+	_is_invincible = false
+	_shield_instance = null

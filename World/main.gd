@@ -250,7 +250,7 @@ func _on_boss_timer_timeout() -> void:
 	_trigger_next_boss_encounter()
 
 func _on_boss_manager_defeated(_boss_id: StringName, score_value: int) -> void:
-	GameManager.add_score_from_boss(score_value)
+	GameManager.add_score(score_value, false)
 	if GameManager.get_game_mode() == GameManager.GameMode.BOSS_RUSH:
 		if _boss_wave >= BOSS_WAVE_SEQUENCE.size():
 			_boss_wave = 0 # Loop back to the beginning.

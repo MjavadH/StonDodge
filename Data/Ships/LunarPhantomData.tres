@@ -19,7 +19,9 @@ abilities = Array[ExtResource("1_yuycj")]([ExtResource("2_4dvts"), ExtResource("
 compatible_bonuses = {
 &"2x": 50,
 &"Heal": 10,
+&"MeteorCrate": 10,
 &"Mini-Drone": 10,
+&"Shield": 10,
 &"Slow-Mo": 5,
 &"Speed": 30
 }

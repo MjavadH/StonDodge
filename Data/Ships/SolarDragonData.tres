@@ -20,7 +20,9 @@ compatible_bonuses = {
 &"2x": 30,
 &"BulletSpeed": 30,
 &"Heal": 10,
+&"MeteorCrate": 10,
 &"Mini-Drone": 10,
+&"Shield": 10,
 &"Slow-Mo": 5,
 &"Speed": 40
 }

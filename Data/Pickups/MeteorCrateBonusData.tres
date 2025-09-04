@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BonusData" load_steps=3 format=3 uid="uid://bdr0mde4qimbd"]
+
+[ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="1_f1otx"]
+[ext_resource type="Texture2D" uid="uid://bx1qauwfntq8u" path="res://Bonus/assets/Bonus_MeteorCrate.webp" id="2_f1otx"]
+
+[resource]
+script = ExtResource("1_f1otx")
+bonus_type = &"MeteorCrate"
+texture = ExtResource("2_f1otx")
+collection_anim_name = &"Purple"
+weight = 5
+metadata/_custom_type_script = "uid://b7b3jt3pp3g7e"

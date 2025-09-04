@@ -86,7 +86,7 @@ func _die() -> void:
 	set_physics_process(false)
 	
 	meteor_destroyed.emit(_score_value, global_position)
-	GameManager.add_score_from_enemy(_score_value)
+	GameManager.add_score(_score_value)
 	
 	if _is_bonus_carrier:
 		bonus_dropped.emit(global_position)

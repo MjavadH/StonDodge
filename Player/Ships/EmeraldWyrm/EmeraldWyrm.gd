@@ -3,7 +3,7 @@ extends BaseShip
 ##- Constants -----------------------------------------------------------------##
 const BULLET_SCENE: PackedScene = preload("res://Player/Ships/EmeraldWyrm/Weapons/EmeraldWyrm_bullet.tscn")
 const SHOOT_SOUND: AudioStream = preload("res://Player/Ships/EmeraldWyrm/assets/Emerald-Wyrm_bullet_sound.ogg")
-const SHIELD_SCENE: PackedScene = preload("res://Player/Ships/EmeraldWyrm/Abilities/EmeraldShell/EmeraldShell.tscn")
+const EMERALDSHELL_SCENE: PackedScene = preload("res://Player/Ships/EmeraldWyrm/Abilities/EmeraldShell/EmeraldShell.tscn")
 const GEAROVERCLOCK_ON: AudioStream = preload("res://Player/Ships/EmeraldWyrm/assets/GearOverclock_On.ogg")
 const GEAROVERCLOCK_OFF: AudioStream = preload("res://Player/Ships/EmeraldWyrm/assets/GearOverclock_Off.ogg")
 
@@ -48,7 +48,7 @@ func _activate_special_ability(ability_id: StringName) -> void:
 			if is_instance_valid(_active_shield_instance):
 				return
 	
-			_active_shield_instance = SHIELD_SCENE.instantiate()
+			_active_shield_instance = EMERALDSHELL_SCENE.instantiate()
 			add_child(_active_shield_instance)
 			
 			_active_shield_instance.shield_destroyed.connect(_on_shield_destroyed)

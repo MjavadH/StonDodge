@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbrtayhonlktm"]
+[gd_scene load_steps=11 format=3 uid="uid://bbrtayhonlktm"]
 
 [ext_resource type="Script" uid="uid://byanhievklwtk" path="res://Core/BonusRegistry.gd" id="1_wr231"]
 [ext_resource type="Script" uid="uid://b7b3jt3pp3g7e" path="res://Data/Pickups/BonusData.gd" id="2_2500e"]
@@ -8,7 +8,9 @@
 [ext_resource type="Resource" uid="uid://cmthgg7gbvcmy" path="res://Data/Pickups/2xBonusData.tres" id="6_oejtf"]
 [ext_resource type="Resource" uid="uid://domkqvrw4e2o4" path="res://Data/Pickups/Mini-DroneBonusData.tres" id="7_2500e"]
 [ext_resource type="Resource" uid="uid://c5nq5f6xj6p5n" path="res://Data/Pickups/Slow-MoBonusData.tres" id="8_0acx8"]
+[ext_resource type="Resource" uid="uid://bdr0mde4qimbd" path="res://Data/Pickups/MeteorCrateBonusData.tres" id="9_ucl13"]
+[ext_resource type="Resource" uid="uid://p8a2vkjju8is" path="res://Data/Pickups/ShieldBonusData.tres" id="10_wik5w"]
 
 [node name="BonusRegistry" type="Node"]
 script = ExtResource("1_wr231")
-all_bonuses = Array[ExtResource("2_2500e")]([ExtResource("3_0acx8"), ExtResource("4_ucl13"), ExtResource("5_wik5w"), ExtResource("6_oejtf"), ExtResource("7_2500e"), ExtResource("8_0acx8")])
+all_bonuses = Array[ExtResource("2_2500e")]([ExtResource("3_0acx8"), ExtResource("4_ucl13"), ExtResource("5_wik5w"), ExtResource("6_oejtf"), ExtResource("7_2500e"), ExtResource("8_0acx8"), ExtResource("9_ucl13"), ExtResource("10_wik5w")])

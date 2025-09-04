@@ -78,12 +78,10 @@ func get_total_score() -> int:
 func get_current_score() -> int:
 	return _current_game_score
 
-func add_score_from_enemy(value: int) -> void:
-	_current_game_score += value * _score_multiplier
-	current_score_updated.emit(_current_game_score)
-
-func add_score_from_boss(value: int) -> void:
-	_current_game_score += value
+func add_score(value: int, multiplier: bool = true) -> void:
+	if multiplier: 
+		_current_game_score += value * _score_multiplier
+	else: _current_game_score += value
 	current_score_updated.emit(_current_game_score)
 
 func set_score_multiplier(multiplier: int) -> void:
